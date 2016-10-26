@@ -15,3 +15,5 @@ Imports:
     jsonlite,
     dplyr
 RoxygenNote: 5.0.1
+Suggests: covr,
+    testthat
