@@ -23,14 +23,14 @@ devtools::install_github("njtierney/ukpolice")
 Usage
 =====
 
-`get_neighbourhoods`, retrieves a list of neighbourhoods for a force, <https://data.police.uk/docs/method/neighbourhoods/>
+`ukp_neighbourhood`, retrieves a list of neighbourhoods for a force, <https://data.police.uk/docs/method/neighbourhoods/>
 
 This returns a tibble with columns `id` and `name`.
 
 ``` r
 
 library(ukpolice)
-get_neighbourhoods("leicestershire")
+ukp_neighbourhood("leicestershire")
 #> No encoding supplied: defaulting to UTF-8.
 #> # A tibble: 67 × 2
 #>       id                           name

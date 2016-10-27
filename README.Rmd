@@ -31,20 +31,19 @@ devtools::install_github("njtierney/ukpolice")
 
 # Usage
 
-`get_neighbourhoods`, retrieves a list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
+`ukp_neighbourhood`, retrieves a list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
 
 This returns a tibble with columns `id` and `name`. 
 
 ```{r}
 
 library(ukpolice)
-get_neighbourhoods("leicestershire")
+ukp_neighbourhood("leicestershire")
 
 ```
 
 - `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force). 
 - `name` is the name for the neighbourhood.
-
 
 
 # Contributor Code of Conduct
