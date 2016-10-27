@@ -1,4 +1,6 @@
-#' get_neighbourhoods
+#' API calls around the neighbourhoods
+#'
+#' ukp_neighbourhoods
 #'
 #' This call retuns the list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
 #'
@@ -11,7 +13,7 @@
 #'
 #' \dontrun{
 #' library(ukpolice)
-#' get_neighbourhoods("leicestershire")
+#' ukp_neighbourhood("leicestershire")
 #'
 # # A tibble: 67 × 2
 #      id                            name
@@ -25,12 +27,28 @@
 #
 #' }
 #'
-get_neighbourhoods <- function(neighbourhood){
+ukp_neighbourhood <- function(neighbourhood){
 
-  result <- ukpolice_api(sprintf("api/%s/neighbourhoods",neighbourhood))
+  result <- ukp_api(sprintf("api/%s/neighbourhoods",neighbourhood))
 
   dplyr::bind_rows(result$content)
 
 }
+#' ukp_neighbourhood_team
+#'
+#' \code{ukp_neighbourhood_team} takes a longitude/latitude string and finds the associated neighbourhood code associated with that. Read more here https://data.police.uk/docs/method/neighbourhood-locate/
+#'
+#' @param lat_long a character string of
+#'
+#' @return a tibble
+#'
+#' @export
+#'
+ukp_neighbourhood_team <- function(lat_long){
+  # lat_long = c("51.500617,-0.124629")
+  result <- ukp_api(sprintf("api/locate-neighbourhood?q=%s", lat_long))
 
+  dplyr::bind_rows(result$content)
+
+}
 
