@@ -4,10 +4,12 @@
 \alias{ukp_neighbourhood_team}
 \title{ukp_neighbourhood_team}
 \usage{
-ukp_neighbourhood_team(lat_long)
+ukp_neighbourhood_team(lat_long, ...)
 }
 \arguments{
-\item{lat_long}{a character string of}
+\item{lat_long}{a character string of latitude and longitude}
+
+\item{...}{further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose())}
 }
 \value{
 a tibble
