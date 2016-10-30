@@ -1,8 +1,8 @@
-#' API calls around the neighbourhoods
+#' neighbourhood related API calls
 #'
-#' ukp_neighbourhoods
+#' ukp_neighbourhood
 #'
-#' This call retuns the list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
+#' ukp_neighbourhood retuns the list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
 #'
 #' @param neighbourhood a text string of a neighbourhood in the UK
 #' @param ... further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose())
@@ -34,9 +34,9 @@ ukp_neighbourhood <- function(neighbourhood, ...){
   dplyr::bind_rows(result$content)
 
 }
-#' ukp_neighbourhood_team
+#' ukp_neighbourhood_location
 #'
-#' \code{ukp_neighbourhood_team} takes a longitude/latitude string and finds the associated neighbourhood code associated with that. Read more here https://data.police.uk/docs/method/neighbourhood-locate/
+#' \code{ukp_neighbourhood_location} takes a longitude/latitude string and finds the associated neighbourhood code associated with that. Read more here https://data.police.uk/docs/method/neighbourhood-locate/
 #'
 #' @param lat_long a character string of latitude and longitude
 #' @param ... further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose())
@@ -44,7 +44,7 @@ ukp_neighbourhood <- function(neighbourhood, ...){
 #'
 #' @export
 #'
-ukp_neighbourhood_team <- function(lat_long, ...){
+ukp_neighbourhood_location <- function(lat_long, ...){
   # lat_long = c("51.500617,-0.124629")
   result <- ukp_api(sprintf("api/locate-neighbourhood?q=%s", lat_long))
 
@@ -52,3 +52,40 @@ ukp_neighbourhood_team <- function(lat_long, ...){
 
 }
 
+#' Specific neighbourhood
+#'
+#' ukp_neighbourhood_specific
+#'
+#'
+#'
+#' Neighbourhood boundary
+#'
+#' ukp_neighbourhood_boundary
+#'
+#'
+#'
+#' Neighbourhood team
+#'
+#' ukp_neighbourhood_team
+#'
+#'
+#'
+#' Neighbourhood events
+#'
+#' ukp_neighbourhood_event
+#'
+#'
+#'
+#' Neighbourhood priorities
+#'
+#' ukp_neighbourhood_priority
+#'
+#'
+#'
+#' Locate neighbourhood
+#'
+#'  ukp_neighbourhood_locate
+#'
+#'
+#'
+#'
