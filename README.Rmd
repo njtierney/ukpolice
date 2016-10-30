@@ -45,6 +45,15 @@ ukp_neighbourhood("leicestershire")
 - `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force). 
 - `name` is the name for the neighbourhood.
 
+`ukp_crime_street_point` draws crimes from within a one mile radius.
+
+```{r}
+
+ukp_crime_street_point(lat = 52.629729, lng = -1.131592)
+
+```
+
+This is still a little buggy at the moment as it returns blank columns, but this is a work in progress!
 
 # Contributor Code of Conduct
 
