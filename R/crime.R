@@ -29,13 +29,16 @@ ukp_crime_street_point <- function(lat,
 
     result_unlist <- unlist(result_content)
 
-    result_df <- as.data.frame(result_unlist) %>%
-      dplyr::mutate(variables = rownames(.)) %>%
-      dplyr::select(variables,
-                    result_unlist) %>%
-      tidyr::spread(key = "variables",
-                    value = "result_unlist") %>%
-      tibble::as_tibble()
+    result_df <- as.data.frame(result_unlist)
+    result_df <- dplyr::mutate(result_df,
+                               variables = rownames(result_df))
+    result_df <- dplyr::select(result_df,
+                               variables,
+                               result_unlist)
+    result_df <- tidyr::spread(result_df,
+                               key = "variables",
+                               value = "result_unlist")
+    result_df <- tibble::as_tibble(result_df)
 
     result_df
 
