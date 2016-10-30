@@ -2,6 +2,7 @@
 
 S3method(print,ukp_api)
 export(ukp_api)
+export(ukp_last_update)
 export(ukp_neighbourhood)
-export(ukp_neighbourhood_team)
+export(ukp_neighbourhood_location)
 importFrom(utils,str)
