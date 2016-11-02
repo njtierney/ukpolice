@@ -7,7 +7,7 @@
 #' ukp_forces
 #'
 #' List of forces
-#' @return table with columns id, and name. id is a	Unique force identifier, name is a	Force name.
+# #' @return table with columns id, and name. id is a	Unique force identifier, name is a	Force name.
 #'
 #'
 #' Specific force

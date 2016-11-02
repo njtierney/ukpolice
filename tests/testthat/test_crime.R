@@ -14,6 +14,7 @@
 #                        "persistent_id",
 #                        "outcome_category",
 #                        "outcome_date")
+# c("category", "persistent_id", "not", "date", "latitude", "longitude", "street_id", "street_name", "context", "id", "location_type", "es", "location_subtype", "outcome_status")
 #
 # test_crime <- ukp_crime_street_point(lat = 52.629729,
 #                                      lng = -1.131592)
