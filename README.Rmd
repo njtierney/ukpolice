@@ -14,7 +14,9 @@ knitr::opts_chunk$set(
 # ukpolice
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ukpolice?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ukpolice)[![Travis-CI Build Status](https://travis-ci.org/njtierney/ukpolice.svg?branch=master)](https://travis-ci.org/njtierney/ukpolice)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/ukpolice/master.svg)](https://codecov.io/github/njtierney/ukpolice?branch=master)
 
-ukpolice is an R package that facilitates retrieving data from the [UK police database.](https://data.police.uk/)
+ukpolice is an R package that facilitates retrieving data from the [UK police database.](https://data.police.uk/).
+
+The data provided by the API contains public sector information licensed under the [Open Government Licence v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
 
 This package is in a very beta stage, and I'm still learning a lot about APIs!
 
@@ -22,7 +24,7 @@ This package is in a very beta stage, and I'm still learning a lot about APIs!
 
 Install from GitHub
 
-```{r eval = FALSE}
+```{r install, eval = FALSE}
 
 #install.packages("devtools")
 devtools::install_github("njtierney/ukpolice")
@@ -35,7 +37,7 @@ devtools::install_github("njtierney/ukpolice")
 
 This returns a tibble with columns `id` and `name`. 
 
-```{r}
+```{r ukp-neighbourhood}
 
 library(ukpolice)
 ukp_neighbourhood("leicestershire")
@@ -45,7 +47,7 @@ ukp_neighbourhood("leicestershire")
 - `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force). 
 - `name` is the name for the neighbourhood.
 
-`ukp_crime_street_point` draws crimes from within a one mile radius.
+`ukp_crime_street_point` draws crimes from within a one mile radius of the location.
 
 ```{r}
 
