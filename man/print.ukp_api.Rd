@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{object of class "ukp_api"}
 
-\item{...}{further arguments passed to or from other methods.}
+\item{...}{further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).}
 }
 \value{
 a special print method lifted from https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html

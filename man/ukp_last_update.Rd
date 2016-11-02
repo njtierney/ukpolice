@@ -7,7 +7,7 @@
 ukp_last_update(...)
 }
 \arguments{
-\item{...}{further arguments passed to or from other methods.}
+\item{...}{further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).}
 }
 \value{
 date	Month of latest crime data in ISO format. The day is irrelevant and is only there to keep a standard formatted date. Read more at https://data.police.uk/docs/method/crime-last-updated/

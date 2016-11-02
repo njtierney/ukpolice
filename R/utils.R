@@ -1,7 +1,7 @@
 #' ukpolice_api
 #'
 #' @param path character
-#' @param ... further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose())
+#' @param ... further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).
 #'
 #' @return a ukpolice_api object
 #'
@@ -53,7 +53,8 @@ ukp_api <- function(path, ...) {
 #' print method for ukpolice_api
 #'
 #' @param x object of class "ukp_api"
-#' @param ... further arguments passed to or from other methods.
+#' @param ... further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).
+
 #'
 #' @return a special print method lifted from https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html
 #' @export
@@ -67,7 +68,7 @@ print.ukp_api <- function(x, ...) {
 #'
 #' Crime data in the API is updated once a month. Find out when it was last updated.
 #'
-#' @param ... further arguments passed to or from other methods.
+#' @param ... further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).
 #' @return date	Month of latest crime data in ISO format. The day is irrelevant and is only there to keep a standard formatted date. Read more at https://data.police.uk/docs/method/crime-last-updated/
 #'
 #' @export
@@ -81,7 +82,8 @@ ukp_last_update <- function(...){
 # #'
 # #' Returns a list of available data sets
 # #' @param data type of data to be searched. For example: "crimes-street-dates"
-# #' @param ... further arguments passed to or from other methods.
+# #' @param ... further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).
+
 # #'
 # #' @return tibble with two columns, date, and stop-and-search. Date contains the Year and month of all available street level crime data in ISO format. stop-and-search contains a list of force IDs for forces that have provided stop and search data for this month. Read more here: https://data.police.uk/docs/method/crimes-street-dates/
 # #'
