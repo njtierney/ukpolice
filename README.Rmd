@@ -47,16 +47,73 @@ ukp_neighbourhood("leicestershire")
 - `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force). 
 - `name` is the name for the neighbourhood.
 
-`ukp_crime_street_point` draws crimes from within a one mile radius of the location.
+`ukp_crime` draws crimes from within a one mile radius of the location.
+
+When no date is specified, it uses the latest month available, which can be found using `ukp_last_update`.
 
 ```{r}
 
-ukp_crime_street_point(lat = 52.629729, lng = -1.131592)
+crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
+
+head(crime_data)
+
+ukp_last_update()
 
 ```
 
-This is still a little buggy at the moment as it returns blank columns, but this is a work in progress!
+When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime` only allows for searching of that current month.
 
-### Code of Conduct
+```{r}
+
+crime_data_date <- ukp_crime(lat = 52.629729, 
+                        lng = -1.131592,
+                        date = "2016-03")
+
+head(crime_data_date)
+
+```
+
+This is still a little buggy at the moment as it returns blank columns for variables like `persistent_id` and `context`, `location_subtype`, and `outcome_status`. This issue is currently logged at [issue #11](https://github.com/njtierney/ukpolice/issues/11).
+
+# What can you do with it?
+
+## Crime types
+
+```{r count-example}
+
+library(dplyr)
+library(ggplot2)
+
+crime_data_date %>%
+  count(category) %>%
+  ggplot(aes(x = reorder(category, n),
+             y = n)) + 
+  geom_col() + 
+  labs(x = "Crime Type",
+       y = "Number of Crimes",
+       title = paste0("Crimes commited in ",crime_data_date$date[1])) +
+  coord_flip() +
+  theme_minimal()
+  
+```
+
+
+## Leaflet examples
+
+You can add a popup that displays the crime type using the `popup` argument in leaflet.
+
+```{r leaflet-example}
+
+library(leaflet)
+
+crime_data_date %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(popup = ~category)
+
+```
+
+
+## Code of Conduct
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

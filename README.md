@@ -53,57 +53,110 @@ ukp_neighbourhood("leicestershire")
 -   `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force).
 -   `name` is the name for the neighbourhood.
 
-`ukp_crime_street_point` draws crimes from within a one mile radius of the location.
+`ukp_crime` draws crimes from within a one mile radius of the location.
+
+When no date is specified, it uses the latest month available, which can be found using `ukp_last_update`.
 
 ``` r
 
-ukp_crime_street_point(lat = 52.629729, lng = -1.131592)
+crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
 #> No encoding supplied: defaulting to UTF-8.
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
 
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
+head(crime_data)
+#> # A tibble: 6 × 12
+#>                category persistent_id    date latitude longitude street_id
+#>                   <chr>         <chr>   <chr>    <dbl>     <dbl>     <chr>
+#> 1 anti-social-behaviour               2016-08 52.63247 -1.134164    883334
+#> 2 anti-social-behaviour               2016-08 52.62929 -1.144983   1319949
+#> 3 anti-social-behaviour               2016-08 52.62749 -1.118661    883201
+#> 4 anti-social-behaviour               2016-08 52.62749 -1.118661    883201
+#> 5 anti-social-behaviour               2016-08 52.63716 -1.112261    883042
+#> 6 anti-social-behaviour               2016-08 52.63055 -1.154784    883561
+#> # ... with 6 more variables: street_name <chr>, context <chr>, id <chr>,
+#> #   location_type <chr>, location_subtype <chr>, outcome_status <chr>
 
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-
-#> Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-#> # A tibble: 1,386 × 13
-#>                 category context       id location_subtype location_type
-#>                    <chr>   <chr>    <chr>            <chr>         <chr>
-#> 1  anti-social-behaviour         50559804                          Force
-#> 2  anti-social-behaviour         50565912                          Force
-#> 3  anti-social-behaviour         50562730                          Force
-#> 4  anti-social-behaviour         50562692                          Force
-#> 5  anti-social-behaviour         50562689                          Force
-#> 6  anti-social-behaviour         50562680                          Force
-#> 7  anti-social-behaviour         50565899                          Force
-#> 8  anti-social-behaviour         50559811                          Force
-#> 9  anti-social-behaviour         50559816                          Force
-#> 10 anti-social-behaviour         50562670                          Force
-#> # ... with 1,376 more rows, and 8 more variables: latitude <chr>,
-#> #   longitude <chr>, street_id <chr>, street_name <chr>, date <chr>,
-#> #   persistent_id <chr>, outcome_category <chr>, outcome_date <chr>
+ukp_last_update()
+#> No encoding supplied: defaulting to UTF-8.
+#> [1] "2016-08"
 ```
 
-This is still a little buggy at the moment as it returns blank columns, but this is a work in progress!
+When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime` only allows for searching of that current month.
 
-### Code of Conduct
+``` r
+
+crime_data_date <- ukp_crime(lat = 52.629729, 
+                        lng = -1.131592,
+                        date = "2016-03")
+#> No encoding supplied: defaulting to UTF-8.
+
+head(crime_data_date)
+#> # A tibble: 6 × 12
+#>                category persistent_id    date latitude longitude street_id
+#>                   <chr>         <chr>   <chr>    <dbl>     <dbl>     <chr>
+#> 1 anti-social-behaviour               2016-03 52.63654 -1.128602    883356
+#> 2 anti-social-behaviour               2016-03 52.64332 -1.123841    884316
+#> 3 anti-social-behaviour               2016-03 52.63354 -1.126977    883379
+#> 4 anti-social-behaviour               2016-03 52.62766 -1.149757    883457
+#> 5 anti-social-behaviour               2016-03 52.62766 -1.149757    883457
+#> 6 anti-social-behaviour               2016-03 52.63981 -1.139118    883235
+#> # ... with 6 more variables: street_name <chr>, context <chr>, id <chr>,
+#> #   location_type <chr>, location_subtype <chr>, outcome_status <chr>
+```
+
+This is still a little buggy at the moment as it returns blank columns for variables like `persistent_id` and `context`, `location_subtype`, and `outcome_status`. This issue is currently logged at [issue \#11](https://github.com/njtierney/ukpolice/issues/11).
+
+What can you do with it?
+========================
+
+Crime types
+-----------
+
+``` r
+
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+library(ggplot2)
+
+crime_data_date %>%
+  count(category) %>%
+  ggplot(aes(x = reorder(category, n),
+             y = n)) + 
+  geom_col() + 
+  labs(x = "Crime Type",
+       y = "Number of Crimes",
+       title = paste0("Crimes commited in ",crime_data_date$date[1])) +
+  coord_flip() +
+  theme_minimal()
+```
+
+![](README-count-example-1.png)
+
+Leaflet examples
+----------------
+
+You can add a popup that displays the crime type using the `popup` argument in leaflet.
+
+``` r
+
+library(leaflet)
+
+crime_data_date %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(popup = ~category)
+#> Assuming 'longitude' and 'latitude' are longitude and latitude, respectively
+```
+
+![](README-leaflet-example-1.png)
+
+Code of Conduct
+---------------
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
