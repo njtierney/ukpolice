@@ -2,7 +2,7 @@
 
 S3method(print,ukp_api)
 export(ukp_api)
-export(ukp_crime_street_point)
+export(ukp_crime)
 export(ukp_last_update)
 export(ukp_neighbourhood)
 export(ukp_neighbourhood_location)

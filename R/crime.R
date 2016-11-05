@@ -1,5 +1,5 @@
 # Street level crimes ----------------------------------------------------------
-#' ukp_crime_street_point
+#' ukp_crime
 #'
 #' Crimes at street-level; either within a 1 mile radius of a single point, or within a custom area. The street-level crimes returned in the API are only an approximation of where the actual crimes occurred, they are not the exact locations. See the about page (https://data.police.uk/about/#location-anonymisation) for more information about location anonymisation. Note that crime levels may appear lower in Scotland, as only the British Transport Police provide this data.
 #'
@@ -32,7 +32,7 @@
 #'
 #' \dontrun{
 #'
-#' ukp_crime_data <- ukp_crime_street_point(lat = 52.629729, lng = -1.131592)
+#' ukp_crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
 #'
 #' head(ukp_crime_data)
 #'
@@ -40,13 +40,10 @@
 #'
 #' @export
 #'
-ukp_crime_street_point <- function(lat,
-                             lng,
-                             date = NULL,
-                             ...){
-
-  # lat = 52.629729
-  # lng = -1.131592
+ukp_crime <- function(lat,
+                      lng,
+                      date = NULL,
+                      ...){
 
   # transforms this particular JSON list structure into a tibble
   unlist_crime_df <- function(result_content){
