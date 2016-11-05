@@ -5,9 +5,9 @@ ukpolice
 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ukpolice?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ukpolice)[![Travis-CI Build Status](https://travis-ci.org/njtierney/ukpolice.svg?branch=master)](https://travis-ci.org/njtierney/ukpolice)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/ukpolice/master.svg)](https://codecov.io/github/njtierney/ukpolice?branch=master)
 
-ukpolice is an R package that facilitates retrieving data from the [UK police database.](https://data.police.uk/).
+ukpolice is an R package that facilitates retrieving data from the [UK police database.](https://data.police.uk/)
 
-The data provided by the API contains public sector information licensed under the [Open Government Licence v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+The data provided by the API contains public sector information licensed under the [Open Government Licence v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 
 This package is in a very beta stage, and I'm still learning a lot about APIs!
 
@@ -24,6 +24,9 @@ devtools::install_github("njtierney/ukpolice")
 
 Usage
 =====
+
+Neighbourhood
+-------------
 
 `ukp_neighbourhood`, retrieves a list of neighbourhoods for a force, <https://data.police.uk/docs/method/neighbourhoods/>
 
@@ -52,6 +55,9 @@ ukp_neighbourhood("leicestershire")
 
 -   `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force).
 -   `name` is the name for the neighbourhood.
+
+Crime
+-----
 
 `ukp_crime` draws crimes from within a one mile radius of the location.
 
@@ -105,18 +111,29 @@ head(crime_data_date)
 
 This is still a little buggy at the moment as it returns blank columns for variables like `persistent_id` and `context`, `location_subtype`, and `outcome_status`. This issue is currently logged at [issue \#11](https://github.com/njtierney/ukpolice/issues/11).
 
-What can you do with it?
-========================
+Examples
+========
 
-Crime types
------------
+Explore the number of crime types
+---------------------------------
 
 ``` r
 
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 library(ggplot2)
 
-crime_data_date %>%
+crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
+#> No encoding supplied: defaulting to UTF-8.
+
+crime_data %>%
   count(category) %>%
   ggplot(aes(x = reorder(category, n),
              y = n)) + 
@@ -130,23 +147,23 @@ crime_data_date %>%
 
 ![](README-count-example-1.png)
 
-Leaflet examples
-----------------
+Use leaflet
+-----------
 
 You can add a popup that displays the crime type using the `popup` argument in leaflet.
 
 ``` r
-
 library(leaflet)
-
-crime_data_date %>%
+crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
+#> No encoding supplied: defaulting to UTF-8.
+crime_data %>%
   leaflet() %>%
   addTiles() %>%
   addCircleMarkers(popup = ~category)
 #> Assuming 'longitude' and 'latitude' are longitude and latitude, respectively
 ```
 
-![](README-leaflet-example-1.png)
+![](README-leaflet-example-popup-1.png)
 
 Code of Conduct
 ---------------
