@@ -1,3 +1,11 @@
+# ukpolice 0.0.0.9002 (2016-11-05)
+
+## NEW FEATURES
+
+* Created `ukp_crime`, which accesses the crimes that occur within one mile of a given latitude and longitude, and from a specific month
+* Created function `ukp_last_update`, to search for the last update in the crime data.
+* added pkgdown website for the package documentation
+
 # ukpolice 0.0.0.9001 (2016-10-26)
 
 ## MINOR IMPROVEMENTS
