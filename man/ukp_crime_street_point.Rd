@@ -40,4 +40,15 @@ The API will return a 400 status code in response to a GET request longer than 4
 
 more documentation here: https://data.police.uk/docs/method/crime-street/
 }
+\examples{
+
+\dontrun{
+
+ukp_crime_data <- ukp_crime_street_point(lat = 52.629729, lng = -1.131592)
+
+head(ukp_crime_data)
+
+}
+
+}
 

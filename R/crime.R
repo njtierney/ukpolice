@@ -28,6 +28,16 @@
 #'
 #' @note more documentation here: https://data.police.uk/docs/method/crime-street/
 #'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' ukp_crime_data <- ukp_crime_street_point(lat = 52.629729, lng = -1.131592)
+#'
+#' head(ukp_crime_data)
+#'
+#' }
+#'
 #' @export
 #'
 ukp_crime_street_point <- function(lat,
@@ -35,8 +45,8 @@ ukp_crime_street_point <- function(lat,
                              date = NULL,
                              ...){
 
-  lat = 52.629729
-  lng = -1.131592
+  # lat = 52.629729
+  # lng = -1.131592
 
   # transforms this particular JSON list structure into a tibble
   unlist_crime_df <- function(result_content){
@@ -62,7 +72,7 @@ ukp_crime_street_point <- function(lat,
   if(is.null(date) == FALSE){
 
     result <- ukp_api(
-      sprintf("api/crimes-street/all-crime?lat=%s&lng=%s&%s",
+      sprintf("api/crimes-street/all-crime?lat=%s&lng=%s&date=%s",
               lat,
               lng,
               date)
