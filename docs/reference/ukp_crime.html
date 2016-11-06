@@ -128,13 +128,19 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>## Not run: ------------------------------------</span>
-<span class='co'># </span>
-<span class='co'># ukp_crime_data &lt;- ukp_crime(lat = 52.629729, lng = -1.131592)</span>
-<span class='co'># </span>
-<span class='co'># head(ukp_crime_data)</span>
-<span class='co'># </span>
-<span class='co'>## ---------------------------------------------</span></div></pre>
+<span class='no'>ukp_crime_data</span> <span class='kw'>&lt;-</span> <span class='fu'>ukp_crime</span>(<span class='kw'>lat</span> <span class='kw'>=</span> <span class='fl'>52.629729</span>, <span class='kw'>lng</span> <span class='kw'>=</span> -<span class='fl'>1.131592</span>)</div><div class='output co'>#&gt; <span class='message'>No encoding supplied: defaulting to UTF-8.</span></div><div class='input'>
+<span class='fu'>head</span>(<span class='no'>ukp_crime_data</span>)</div><div class='output co'>#&gt; # A tibble: 6 × 12
+#&gt;                category persistent_id    date latitude longitude street_id
+#&gt;                   &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;chr&gt;
+#&gt; 1 anti-social-behaviour               2016-08 52.63247 -1.134164    883334
+#&gt; 2 anti-social-behaviour               2016-08 52.62929 -1.144983   1319949
+#&gt; 3 anti-social-behaviour               2016-08 52.62749 -1.118661    883201
+#&gt; 4 anti-social-behaviour               2016-08 52.62749 -1.118661    883201
+#&gt; 5 anti-social-behaviour               2016-08 52.63716 -1.112261    883042
+#&gt; 6 anti-social-behaviour               2016-08 52.63055 -1.154784    883561
+#&gt; # ... with 6 more variables: street_name &lt;chr&gt;, context &lt;chr&gt;, id &lt;chr&gt;,
+#&gt; #   location_type &lt;chr&gt;, location_subtype &lt;chr&gt;, outcome_status &lt;chr&gt;</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

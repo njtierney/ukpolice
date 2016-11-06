@@ -120,14 +120,6 @@ Explore the number of crime types
 ``` r
 
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 library(ggplot2)
 
 crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
