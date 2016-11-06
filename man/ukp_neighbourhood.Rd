@@ -22,11 +22,9 @@ ukp_neighbourhood retuns the list of neighbourhoods for a force, https://data.po
 }
 \examples{
 
-\dontrun{
 library(ukpolice)
 ukp_neighbourhood("leicestershire")
 
-}
 
 }
 

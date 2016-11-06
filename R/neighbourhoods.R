@@ -12,21 +12,9 @@
 #'
 #' @examples
 #'
-#' \dontrun{
 #' library(ukpolice)
 #' ukp_neighbourhood("leicestershire")
 #'
-# # A tibble: 67 × 2
-#      id                            name
-#    <chr>                          <chr>
-# 1   NC04                    City Centre
-# 2   NC66               Cultural Quarter
-# 3   NC67                      Riverside
-# 4   NC68                 Clarendon Park
-# 5   NE09                 Belgrave South
-# # ...
-#
-#' }
 #'
 ukp_neighbourhood <- function(neighbourhood, ...){
 

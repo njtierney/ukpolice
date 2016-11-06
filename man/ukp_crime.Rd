@@ -42,13 +42,9 @@ more documentation here: https://data.police.uk/docs/method/crime-street/
 }
 \examples{
 
-\dontrun{
-
 ukp_crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
 
 head(ukp_crime_data)
-
-}
 
 }
 
