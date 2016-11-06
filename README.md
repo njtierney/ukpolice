@@ -28,7 +28,7 @@ Usage
 Neighbourhood
 -------------
 
-`ukp_neighbourhood`, retrieves a list of neighbourhoods for a force, <https://data.police.uk/docs/method/neighbourhoods/>
+`ukp_neighbourhood()`, retrieves a list of neighbourhoods for a force, <https://data.police.uk/docs/method/neighbourhoods/>
 
 This returns a tibble with columns `id` and `name`.
 
@@ -59,9 +59,9 @@ ukp_neighbourhood("leicestershire")
 Crime
 -----
 
-`ukp_crime` draws crimes from within a one mile radius of the location.
+`ukp_crime()` draws crimes from within a one mile radius of the location.
 
-When no date is specified, it uses the latest month available, which can be found using `ukp_last_update`.
+When no date is specified, it uses the latest month available, which can be found using `ukp_last_update()`.
 
 ``` r
 
@@ -86,7 +86,7 @@ ukp_last_update()
 #> [1] "2016-08"
 ```
 
-When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime` only allows for searching of that current month.
+When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime()` only allows for searching of that current month.
 
 ``` r
 
@@ -120,6 +120,14 @@ Explore the number of crime types
 ``` r
 
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 library(ggplot2)
 
 crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)

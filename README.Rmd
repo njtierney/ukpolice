@@ -35,7 +35,7 @@ devtools::install_github("njtierney/ukpolice")
 
 ## Neighbourhood
 
-`ukp_neighbourhood`, retrieves a list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
+`ukp_neighbourhood()`, retrieves a list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
 
 This returns a tibble with columns `id` and `name`. 
 
@@ -51,9 +51,9 @@ ukp_neighbourhood("leicestershire")
 
 ## Crime
 
-`ukp_crime` draws crimes from within a one mile radius of the location.
+`ukp_crime()` draws crimes from within a one mile radius of the location.
 
-When no date is specified, it uses the latest month available, which can be found using `ukp_last_update`.
+When no date is specified, it uses the latest month available, which can be found using `ukp_last_update()`.
 
 ```{r crime-example}
 
@@ -65,7 +65,7 @@ ukp_last_update()
 
 ```
 
-When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime` only allows for searching of that current month.
+When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime()` only allows for searching of that current month.
 
 ```{r crime-data-date-example}
 
