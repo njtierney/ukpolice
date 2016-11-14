@@ -2,3 +2,20 @@ home:
   links:
   - text: Learn more
     href: https://github.com/njtierney/ukpolice
+reference:
+  - title: "Crime"
+    desc: >
+      Access Crime data
+    contents:
+      - starts_with("ukp_crime")
+  - title: "Neighbourhood"
+    desc: >
+      Access Neighbourhood data
+    contents:
+      - starts_with("ukp_neighbourhood")
+  - title: "Utilities"
+    desc: >
+      Utility functions
+    contents:
+      - ukp_api
+      - ukp_last_update

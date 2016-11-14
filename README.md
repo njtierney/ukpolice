@@ -72,18 +72,18 @@ head(crime_data)
 #> # A tibble: 6 × 12
 #>                category persistent_id    date latitude longitude street_id
 #>                   <chr>         <chr>   <chr>    <dbl>     <dbl>     <chr>
-#> 1 anti-social-behaviour               2016-08 52.63247 -1.134164    883334
-#> 2 anti-social-behaviour               2016-08 52.62929 -1.144983   1319949
-#> 3 anti-social-behaviour               2016-08 52.62749 -1.118661    883201
-#> 4 anti-social-behaviour               2016-08 52.62749 -1.118661    883201
-#> 5 anti-social-behaviour               2016-08 52.63716 -1.112261    883042
-#> 6 anti-social-behaviour               2016-08 52.63055 -1.154784    883561
+#> 1 anti-social-behaviour               2016-09 52.62159 -1.113536    882481
+#> 2 anti-social-behaviour               2016-09 52.63672 -1.132898    883359
+#> 3 anti-social-behaviour               2016-09 52.63074 -1.114858    883081
+#> 4 anti-social-behaviour               2016-09 52.63388 -1.117602    883206
+#> 5 anti-social-behaviour               2016-09 52.62442 -1.150485    882275
+#> 6 anti-social-behaviour               2016-09 52.63945 -1.123165    883269
 #> # ... with 6 more variables: street_name <chr>, context <chr>, id <chr>,
 #> #   location_type <chr>, location_subtype <chr>, outcome_status <chr>
 
 ukp_last_update()
 #> No encoding supplied: defaulting to UTF-8.
-#> [1] "2016-08"
+#> [1] "2016-09"
 ```
 
 When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime()` only allows for searching of that current month.
@@ -99,7 +99,7 @@ head(crime_data_date)
 #> # A tibble: 6 × 12
 #>                category persistent_id    date latitude longitude street_id
 #>                   <chr>         <chr>   <chr>    <dbl>     <dbl>     <chr>
-#> 1 anti-social-behaviour               2016-03 52.63654 -1.128602    883356
+#> 1 anti-social-behaviour               2016-03 52.64332 -1.123841    884316
 #> 2 anti-social-behaviour               2016-03 52.64332 -1.123841    884316
 #> 3 anti-social-behaviour               2016-03 52.63354 -1.126977    883379
 #> 4 anti-social-behaviour               2016-03 52.62766 -1.149757    883457
@@ -120,6 +120,17 @@ Explore the number of crime types
 ``` r
 
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following object is masked from 'package:testthat':
+#> 
+#>     matches
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 library(ggplot2)
 
 crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)

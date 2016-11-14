@@ -74,15 +74,25 @@
     </div>
 
     <div class="contents">
-    <div id="ukpolice-0-0-0-9002-2016-11-05" class="section level1">
+    <div id="ukpolice-0-0-0-9100-2016-11-14" class="section level1">
 <h1 class="hasAnchor">
-<a href="#ukpolice-0-0-0-9002-2016-11-05" class="anchor"> </a>ukpolice 0.0.0.9002 (2016-11-05)</h1>
+<a href="#ukpolice-0-0-0-9100-2016-11-14" class="anchor"> </a>ukpolice 0.0.0.9100 (2016-11-14)</h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-features" class="anchor"> </a>NEW FEATURES</h2>
-<ul><li>Created <code>ukp_crime</code>, which accesses the crimes that occur within one mile of a given latitude and longitude, and from a specific month</li>
-<li>Created function <code>ukp_last_update</code>, to search for the last update in the crime data.</li>
-<li>added pkgdown website for the package documentation</li>
+<ul><li>Add <code><a href="../reference/ukp_crime_poly.html">ukp_crime_poly()</a></code>, which is like <code><a href="../reference/ukp_crime.html">ukp_crime()</a></code>, but takes multiple pairs of long/lat to extract crime that falls within a polygon, instead of within a one mile radius of a particular point</li>
+<li>Added unexported function <code>ukp_crime_unlist</code> which flattens the crime data.</li>
+</ul></div>
+</div>
+    <div id="ukpolice-0-0-0-9002-2016-11-05" class="section level1">
+<h1 class="hasAnchor">
+<a href="#ukpolice-0-0-0-9002-2016-11-05" class="anchor"> </a>ukpolice 0.0.0.9002 (2016-11-05)</h1>
+<div id="new-features-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features-1" class="anchor"> </a>NEW FEATURES</h2>
+<ul><li>Created <code><a href="../reference/ukp_crime.html">ukp_crime()</a></code>, which accesses the crimes that occur within one mile of a given latitude and longitude, and from a specific month</li>
+<li>Created function <code><a href="../reference/ukp_last_update.html">ukp_last_update()</a></code>, to search for the last update in the crime data.</li>
+<li>Added pkgdown website for the package documentation</li>
 </ul></div>
 </div>
     <div id="ukpolice-0-0-0-9001-2016-10-26" class="section level1">
@@ -91,20 +101,20 @@
 <div id="minor-improvements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-improvements" class="anchor"> </a>MINOR IMPROVEMENTS</h2>
-<ul><li>changed all functions to have prefix <code>ukp_</code>, so <code>get_neighbourhoods</code> changed to <code>ukp_neighbourhood</code>, and <code>ukpolice_api</code> changed to <code>ukp_api</code>, as suggested by @sckott in <a href="https://github.com/njtierney/ukpolice/issues/6">issue #6</a>.</li>
-<li>added function <code>ukp_neighbourhood_force</code>, to find associated neighbourhood forcename and neighbourhood ID.</li>
-<li>added <code>...</code> option in <code>ukp_api</code>, to facilitate debugging, as suggested by @sckott in <a href="https://github.com/njtierney/ukpolice/issues/7">issue #7</a>
+<ul><li>Changed all functions to have prefix <code>ukp_</code>, so <code>get_neighbourhoods</code> changed to <code><a href="../reference/ukp_neighbourhood.html">ukp_neighbourhood()</a></code>, and <code>ukpolice_api()</code> changed to <code><a href="../reference/ukp_api.html">ukp_api()</a></code>, as suggested by @sckott in <a href="https://github.com/njtierney/ukpolice/issues/6">issue #6</a>.</li>
+<li>Added function <code>ukp_neighbourhood_force()</code>, to find associated neighbourhood forcename and neighbourhood ID.</li>
+<li>Added <code>...</code> option in <code><a href="../reference/ukp_api.html">ukp_api()</a></code>, to facilitate debugging, as suggested by @sckott in <a href="https://github.com/njtierney/ukpolice/issues/7">issue #7</a>
 </li>
 </ul></div>
 </div>
     <div id="ukpolice-0-0-0-9000-2016-10-25" class="section level1">
 <h1 class="hasAnchor">
 <a href="#ukpolice-0-0-0-9000-2016-10-25" class="anchor"> </a>ukpolice 0.0.0.9000 (2016-10-25)</h1>
-<div id="new-features-1" class="section level2">
+<div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"> </a>NEW FEATURES</h2>
+<a href="#new-features-2" class="anchor"> </a>NEW FEATURES</h2>
 <ul><li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-<li>added the <code>get_neighbourhoods</code> function.</li>
+<li>Added the <code>get_neighbourhoods</code> function.</li>
 </ul><!--NEW FEATURES, MINOR IMPROVEMENTS, BUG FIXES, DEPRECATED AND DEFUNCT -- --></div>
 </div>
     </div>
@@ -114,6 +124,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#ukpolice-0-0-0-9100-2016-11-14">0.0.0.9100</a></li>
         <li><a href="#ukpolice-0-0-0-9002-2016-11-05">0.0.0.9002</a></li>
         <li><a href="#ukpolice-0-0-0-9001-2016-10-26">0.0.0.9001</a></li>
         <li><a href="#ukpolice-0-0-0-9000-2016-10-25">0.0.0.9000</a></li>

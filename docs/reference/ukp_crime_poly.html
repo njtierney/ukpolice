@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ukp_crime — ukp_crime • ukpolice</title>
+<title>ukp_crime_poly — ukp_crime_poly • ukpolice</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -69,77 +69,66 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ukp_crime</h1>
+    <h1>ukp_crime_poly</h1>
     </div>
 
     
-    <p>Crimes at street-level; either within a 1 mile radius of a single point, or within a custom area. The street-level crimes returned in the API are only an approximation of where the actual crimes occurred, they are not the exact locations. See the about page (https://data.police.uk/about/#location-anonymisation) for more information about location anonymisation. Note that crime levels may appear lower in Scotland, as only the British Transport Police provide this data.</p>
+    <p>Extract the crime areas within a polygon</p>
     
 
-    <pre><span class='fu'>ukp_crime</span>(<span class='no'>lat</span>, <span class='no'>lng</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>ukp_crime_poly</span>(<span class='no'>poly</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>lat</dt>
-      <dd>latitude of the requested crime area</dd>
-      <dt>lng, </dt>
-      <dd>longitude of the requested crime area</dd>
+      <dt>poly</dt>
+      <dd>The lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. The poly parameter is formatted in lat/lng pairs, separated by colons: [lat],[lng]:[lat],[lng]:[lat],[lng]. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.</dd>
       <dt>date, </dt>
       <dd>Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = &quot;2013-01&quot;</dd>
       <dt>...</dt>
       <dd>further arguments passed to or from other methods. For example, verbose option can be added with ukp_api(&quot;call&quot;, config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).</dd>
     </dl>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>a tibble with the columns:
-<ul>
-<li> category: Category of the crime (https://data.police.uk/docs/method/crime-street/)
-  </li>
-<li> persistent_id: 64-character unique identifier for that crime. (This is different to the existing &#39;id&#39; attribute, which is not guaranteed to always stay the same for each crime.)
-  </li>
-<li> date: Date of the crime YYYY-MM
-  </li>
-<li> latitude: Latitude
-  </li>
-<li> longitude: Longitude
-  </li>
-<li> street_id: Unique identifier for the street
-  </li>
-<li> street_name: Name of the location. This is only an approximation of where the crime happened
-  </li>
-<li> context: Extra information about the crime (if applicable)
-  </li>
-<li> id: ID of the crime. This ID only relates to the API, it is NOT a police identifier
-  </li>
-<li> location_type: The type of the location. Either Force or BTP: Force indicates a normal police force location; BTP indicates a British Transport Police location. BTP locations fall within normal police force boundaries.
-  </li>
-<li> location_subtype: For BTP locations, the type of location at which this crime was recorded.
-  </li>
-<li> outcome_status: The category and date of the latest recorded outcome for the crime
-</li>
-</ul></p>
-    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>The API will return a 400 status code in response to a GET request longer than 4094 characters. For submitting particularly complex poly parameters, consider using POST instead.</p>
-    <p>more documentation here: https://data.police.uk/docs/method/crime-street/</p>
+    <p>further documentation here: https://data.police.uk/docs/method/crime-street/</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>ukp_crime_data</span> <span class='kw'>&lt;-</span> <span class='fu'>ukp_crime</span>(<span class='kw'>lat</span> <span class='kw'>=</span> <span class='fl'>52.629729</span>, <span class='kw'>lng</span> <span class='kw'>=</span> -<span class='fl'>1.131592</span>)</div><div class='output co'>#&gt; <span class='message'>No encoding supplied: defaulting to UTF-8.</span></div><div class='input'>
-<span class='fu'>head</span>(<span class='no'>ukp_crime_data</span>)</div><div class='output co'>#&gt; # A tibble: 6 × 12
-#&gt;                category persistent_id    date latitude longitude street_id
-#&gt;                   &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;chr&gt;
-#&gt; 1 anti-social-behaviour               2016-09 52.62159 -1.113536    882481
-#&gt; 2 anti-social-behaviour               2016-09 52.63672 -1.132898    883359
-#&gt; 3 anti-social-behaviour               2016-09 52.63074 -1.114858    883081
-#&gt; 4 anti-social-behaviour               2016-09 52.63388 -1.117602    883206
-#&gt; 5 anti-social-behaviour               2016-09 52.62442 -1.150485    882275
-#&gt; 6 anti-social-behaviour               2016-09 52.63945 -1.123165    883269
-#&gt; # ... with 6 more variables: street_name &lt;chr&gt;, context &lt;chr&gt;, id &lt;chr&gt;,
-#&gt; #   location_type &lt;chr&gt;, location_subtype &lt;chr&gt;, outcome_status &lt;chr&gt;</div><div class='input'>
+<span class='fu'>library</span>(<span class='no'>ukpolice</span>)
+
+<span class='co'># with 3 points</span>
+<span class='no'>ukp_data_poly_3</span> <span class='kw'>&lt;-</span> <span class='fu'>ukp_crime_poly</span>(
+<span class='kw'>poly</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"52.268, 0.543:52.794,0.238:52.130,0.478"</span>)
+)</div><div class='output co'>#&gt; <span class='message'>No encoding supplied: defaulting to UTF-8.</span></div><div class='input'>
+<span class='fu'>head</span>(<span class='no'>ukp_data_poly_3</span>)</div><div class='output co'>#&gt; # A tibble: 6 × 13
+#&gt;                category context       id location_subtype location_type
+#&gt;                   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;
+#&gt; 1 anti-social-behaviour         51259842                          Force
+#&gt; 2 anti-social-behaviour         51257791                          Force
+#&gt; 3 anti-social-behaviour         51006452                          Force
+#&gt; 4 anti-social-behaviour         51011212                          Force
+#&gt; 5 anti-social-behaviour         51009892                          Force
+#&gt; 6 anti-social-behaviour         51258293                          Force
+#&gt; # ... with 8 more variables: latitude &lt;chr&gt;, longitude &lt;chr&gt;, street_id &lt;chr&gt;,
+#&gt; #   street_name &lt;chr&gt;, date &lt;chr&gt;, persistent_id &lt;chr&gt;, outcome_category &lt;chr&gt;,
+#&gt; #   outcome_date &lt;chr&gt;</div><div class='input'>
+<span class='co'># with 4 points</span>
+<span class='no'>ukp_data_poly_4</span> <span class='kw'>&lt;-</span> <span class='fu'>ukp_crime_poly</span>(
+<span class='kw'>poly</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"52.268, 0.543:52.794,0.238:52.130,0.478:52.000,0.400"</span>)
+)</div><div class='output co'>#&gt; <span class='message'>No encoding supplied: defaulting to UTF-8.</span></div><div class='input'>
+<span class='fu'>head</span>(<span class='no'>ukp_data_poly_4</span>)</div><div class='output co'>#&gt; # A tibble: 6 × 13
+#&gt;                category context       id location_subtype location_type
+#&gt;                   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;
+#&gt; 1 anti-social-behaviour         51259842                          Force
+#&gt; 2 anti-social-behaviour         51257791                          Force
+#&gt; 3 anti-social-behaviour         51006452                          Force
+#&gt; 4 anti-social-behaviour         51011212                          Force
+#&gt; 5 anti-social-behaviour         51009892                          Force
+#&gt; 6 anti-social-behaviour         51258293                          Force
+#&gt; # ... with 8 more variables: latitude &lt;chr&gt;, longitude &lt;chr&gt;, street_id &lt;chr&gt;,
+#&gt; #   street_name &lt;chr&gt;, date &lt;chr&gt;, persistent_id &lt;chr&gt;, outcome_category &lt;chr&gt;,
+#&gt; #   outcome_date &lt;chr&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -147,8 +136,6 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#note">Note</a></li>
       
       <li><a href="#examples">Examples</a></li>
