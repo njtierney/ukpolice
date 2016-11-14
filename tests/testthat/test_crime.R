@@ -32,3 +32,19 @@ test_that("ukp_crime measures date appropriately", {
                          expected = test_date_number)
 })
 
+# with 3 points
+ukp_data_poly_3 <- ukp_crime_poly(
+poly = c("52.268, 0.543:52.794,0.238:52.130,0.478")
+)
+
+test_that("ukp_crime_poly is a tibble", {
+  testthat::expect_is(ukp_data_poly_3, "tbl_df")
+})
+
+ukp_data_poly_4 <- ukp_crime_poly(
+  poly = c("52.268, 0.543:52.794,0.238:52.130,0.478:52.000,0.400")
+)
+
+test_that("ukp_crime_poly works for four points", {
+  testthat::expect_is(ukp_data_poly_4, "tbl_df")
+})
