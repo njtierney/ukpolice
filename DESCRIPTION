@@ -1,6 +1,6 @@
 Package: ukpolice
 Title: Access UK Police Data
-Version: 0.0.0.9002
+Version: 0.0.0.9100
 Authors@R: person("Nicholas", "Tierney", email = "nicholas.tierney@gmail.com", role = c("aut", "cre"))
 Description: This package provides access to the UK police data, 
     https://data.police.uk/ via their API. The data contains various information
@@ -10,6 +10,8 @@ Depends:
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+URL: https://njtierney.com/ukpolice
+BugReports: https://github.com/njtierney/ukpolice/issues
 Imports:
     httr,
     jsonlite,
