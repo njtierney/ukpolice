@@ -1,4 +1,33 @@
 # Street level crimes ----------------------------------------------------------
+#' ukp_crime_unlist
+#'
+#' a utility function to clean and unlist the data extracted from the crime data
+#'
+#' @param result_content a result from the ukp_api
+#'
+#' @return  data frame
+ukp_crime_unlist <- function(result_content){
+
+  result_unlist <- unlist(result_content)
+
+  result_df <- as.data.frame(result_unlist, stringsAsFactors = FALSE)
+
+  result_df <- dplyr::mutate(result_df, variables = rownames(result_df))
+
+  result_df <- dplyr::select(result_df,
+                             variables,
+                             result_unlist)
+
+  result_df <- tidyr::spread(result_df,
+                             key = "variables",
+                             value = "result_unlist")
+
+  result_df <- tibble::as_tibble(result_df)
+
+  return(result_df)
+
+} # end mini function
+#'
 #' ukp_crime
 #'
 #' Crimes at street-level; either within a 1 mile radius of a single point, or within a custom area. The street-level crimes returned in the API are only an approximation of where the actual crimes occurred, they are not the exact locations. See the about page (https://data.police.uk/about/#location-anonymisation) for more information about location anonymisation. Note that crime levels may appear lower in Scotland, as only the British Transport Police provide this data.
@@ -41,26 +70,6 @@ ukp_crime <- function(lat,
                       date = NULL,
                       ...){
 
-  # transforms this particular JSON list structure into a tibble
-  unlist_crime_df <- function(result_content){
-
-    # result_content <- result$content[[1]]
-    result_unlist <- unlist(result_content)
-    result_df <- as.data.frame(result_unlist, stringsAsFactors = FALSE)
-    result_df <- dplyr::mutate(result_df,
-                               variables = rownames(result_df))
-    result_df <- dplyr::select(result_df,
-                               variables,
-                               result_unlist)
-    result_df <- tidyr::spread(result_df,
-                               key = "variables",
-                               value = "result_unlist")
-    result_df <- tibble::as_tibble(result_df)
-
-    return(result_df)
-
-  }
-
   # if date is used
   if(is.null(date) == FALSE){
 
@@ -83,7 +92,7 @@ ukp_crime <- function(lat,
   }
 
   extract_result <- purrr::map_df(.x = result$content,
-                                  .f = unlist_crime_df)
+                                  .f = ukp_crime_unlist)
 
   # rename the data
   extract_result <- dplyr::rename(extract_result,
@@ -117,79 +126,81 @@ ukp_crime <- function(lat,
 
   return(final_result)
 
-}
+} # end function
 
-# ukp_crime_street_poly
-#
-# Extract the crime areas within a polygon
-#
-# @param poly The lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. The poly parameter is formatted in lat/lng pairs, separated by colons: [lat],[lng]:[lat],[lng]:[lat],[lng]. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.
-# @param date, Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"
-# #' @param ... further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).
+#' ukp_crime_poly
+#'
+#' Extract the crime areas within a polygon
+#'
+#' @param poly The lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. The poly parameter is formatted in lat/lng pairs, separated by colons: [lat],[lng]:[lat],[lng]:[lat],[lng]. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.
+#' @param date, Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"
+#' @param ... further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).
+#' @note further documentation here: https://data.police.uk/docs/method/crime-street/
+#'
+#' @examples
+#'
+#' library(ukpolice)
+#'
+#' # with 3 points
+#' ukp_data_poly_3 <- ukp_crime_poly(
+#' poly = c("52.268, 0.543:52.794,0.238:52.130,0.478")
+#' )
+#'
+#' head(ukp_data_poly_3)
+#'
+#' # with 4 points
+#' ukp_data_poly_4 <- ukp_crime_poly(
+#' poly = c("52.268, 0.543:52.794,0.238:52.130,0.478:52.000,0.400")
+#' )
+#'
+#' head(ukp_data_poly_4)
+#'
+#' @export
+ukp_crime_poly <- function(poly,
+                           date = NULL,
+                           ...){
 
-#
-# @note further documentation here: https://data.police.uk/docs/method/crime-street/
-##
-## @export
-##
-# ukp_crime_street_poly(poly,
-#                       date = NULL,
-#                       ...){
-#
-#   # transforms this particular JSON list structure into a tibble
-#   unlist_crime_df <- function(result_content){
-#
-#     result_unlist <- unlist(result_content)
-#
-#     result_df <- as.data.frame(result_unlist) %>%
-#       dplyr::mutate(variables = rownames(.)) %>%
-#       dplyr::select(variables,
-#                     result_unlist) %>%
-#       tidyr::spread(key = "variables",
-#                     value = "result_unlist") %>%
-#       tibble::as_tibble()
-#
-#     result_df
-#
-#   }
-#
-#   poly = c("52.268,0.543:52.794,0.238:52.130,0.478")
-#
-#   # if date is used
-#   if(is.null(date) == FALSE){
-#
-#     result <- ukp_api(
-#       sprintf("api/crimes-street/all-crime?all-crime?poly=%s&date%s",
-#               poly,
-#               date)
-#     )
-#
-#     # else if no date is specified
-#   } else if(is.null(date) == TRUE){
-#
-#     result <- ukp_api(
-#       sprintf("api/crimes-street/all-crime?all-crime?poly=%s",
-#               poly)
-#     )
-#
-#   }
-#
-#   extract_result <- purrr::map_df(.x = result$content,
-#                                   .f = unlist_crime_df)
-#
-#   final_result <-
-#     dplyr::rename(extract_result,
-#                   latitude = location.latitude,
-#                   longitude = location.longitude,
-#                   street_id = location.street.id,
-#                   street_name = location.street.name,
-#                   date = month,
-#                   outcome_category = outcome_status.category,
-#                   outcome_date = outcome_status.date)
-#
-#   return(final_result)
-#
-# }
+  poly = c("52.268,0.543:52.794,0.238:52.130,0.478")
+  date = NULL
+
+  # if date is used
+  if(is.null(date) == FALSE){
+
+    result <- ukp_api(
+      sprintf("api/crimes-street/all-crime?poly=%s&date=%s",
+              poly,
+              date)
+    )
+
+    # else if no date is specified
+  } else if(is.null(date) == TRUE){
+
+    # get the latest date
+    # last_date <- ukpolice::ukp_last_update()
+
+    result <- ukp_api(
+      sprintf("api/crimes-street/all-crime?poly=%s",
+              poly)
+      )
+
+  } # end ifelse
+
+  extract_result <- purrr::map_df(.x = result$content,
+                                  .f = ukpolice:::ukp_crime_unlist)
+
+  final_result <-
+    dplyr::rename(extract_result,
+                  latitude = location.latitude,
+                  longitude = location.longitude,
+                  street_id = location.street.id,
+                  street_name = location.street.name,
+                  date = month,
+                  outcome_category = outcome_status.category,
+                  outcome_date = outcome_status.date)
+
+  return(final_result)
+
+} # end function
 
 #' ukp_crime_street_outcome
 #' ukp_crime_location
