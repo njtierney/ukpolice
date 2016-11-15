@@ -25,14 +25,14 @@ library(ukpolice)
 
 # with 3 points
 ukp_data_poly_3 <- ukp_crime_poly(
-poly = c("52.268, 0.543:52.794,0.238:52.130,0.478")
+poly = c("52.268,0.543:52.794,0.238:52.130,0.478")
 )
 
 head(ukp_data_poly_3)
 
 # with 4 points
 ukp_data_poly_4 <- ukp_crime_poly(
-poly = c("52.268, 0.543:52.794,0.238:52.130,0.478:52.000,0.400")
+poly = c("52.268,0.543:52.794,0.238:52.130,0.478:52.000,0.400")
 )
 
 head(ukp_data_poly_4)
