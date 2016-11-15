@@ -4,36 +4,36 @@
 \alias{ukp_crime_poly}
 \title{ukp_crime_poly}
 \usage{
-ukp_crime_poly(poly, date = NULL, ...)
+ukp_crime_poly(poly_df, date = NULL, ...)
 }
 \arguments{
-\item{poly}{The lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. The poly parameter is formatted in lat/lng pairs, separated by colons: [lat],[lng]:[lat],[lng]:[lat],[lng]. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.}
+\item{poly_df}{dataframe containing the lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. ukp_crime_poly converts the dataframe into lat/lng pairs, separated by colons: [lat],[lng]:[lat],[lng]:[lat],[lng]. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.}
 
 \item{date, }{Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"}
 
-\item{...}{further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).}
+\item{...}{further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation \url{https://cran.r-project.org/web/packages/httr/} and \url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}.}
 }
 \description{
 Extract the crime areas within a polygon
 }
 \note{
-further documentation here: https://data.police.uk/docs/method/crime-street/
+further documentation here: \url{https://data.police.uk/docs/method/crime-street/}
 }
 \examples{
 
 library(ukpolice)
 
 # with 3 points
-ukp_data_poly_3 <- ukp_crime_poly(
-poly = c("52.268,0.543:52.794,0.238:52.130,0.478")
-)
+poly_df_3 = data.frame(lat = c(52.268, 52.794, 52.130),
+                       long = c(0.543, 0.238, 0.478))
 
+ukp_data_poly_3 <- ukp_crime_poly(poly_df_3)
 head(ukp_data_poly_3)
 
 # with 4 points
-ukp_data_poly_4 <- ukp_crime_poly(
-poly = c("52.268,0.543:52.794,0.238:52.130,0.478:52.000,0.400")
-)
+poly_df_4 = data.frame(lat = c(52.268, 52.794, 52.130, 52.000),
+                       long = c(0.543,  0.238,  0.478,  0.400))
+ukp_data_poly_4 <- ukp_crime_poly(poly_df = poly_df_4)
 
 head(ukp_data_poly_4)
 

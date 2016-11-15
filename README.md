@@ -111,6 +111,31 @@ head(crime_data_date)
 
 This is still a little buggy at the moment as it returns blank columns for variables like `persistent_id` and `context`, `location_subtype`, and `outcome_status`. This issue is currently logged at [issue \#11](https://github.com/njtierney/ukpolice/issues/11).
 
+`ukp_crime_poly()` finds all crimes within the polygon provided by a dataframe with columns names "lat" and "long".
+
+``` r
+
+poly_df_3 <- data.frame(lat = c(52.268, 52.794, 52.130),
+                        long = c(0.543, 0.238, 0.478))
+
+ukp_data_poly_3 <- ukp_crime_poly(poly_df_3)
+#> No encoding supplied: defaulting to UTF-8.
+
+head(ukp_data_poly_3)
+#> # A tibble: 6 × 13
+#>                category context       id location_subtype location_type
+#>                   <chr>   <chr>    <chr>            <chr>         <chr>
+#> 1 anti-social-behaviour         51259842                          Force
+#> 2 anti-social-behaviour         51257791                          Force
+#> 3 anti-social-behaviour         51006452                          Force
+#> 4 anti-social-behaviour         51011212                          Force
+#> 5 anti-social-behaviour         51009892                          Force
+#> 6 anti-social-behaviour         51258293                          Force
+#> # ... with 8 more variables: latitude <chr>, longitude <chr>,
+#> #   street_id <chr>, street_name <chr>, date <chr>, persistent_id <chr>,
+#> #   outcome_category <chr>, outcome_date <chr>
+```
+
 Examples
 ========
 
@@ -122,9 +147,6 @@ Explore the number of crime types
 library(dplyr)
 #> 
 #> Attaching package: 'dplyr'
-#> The following object is masked from 'package:testthat':
-#> 
-#>     matches
 #> The following objects are masked from 'package:stats':
 #> 
 #>     filter, lag
