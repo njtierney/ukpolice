@@ -4,8 +4,8 @@ context("Crime")
 crime_table_names <- c("category",
                        "persistent_id",
                        "date",
-                       "latitude",
-                       "longitude",
+                       "lat",
+                       "long",
                        "street_id",
                        "street_name",
                        "context",
@@ -32,6 +32,13 @@ test_that("ukp_crime measures date appropriately", {
                          expected = test_date_number)
 })
 
+test_that("ukp_crime returns lat and long that are numeric", {
+  testthat::expect_is(object = test_crime_date$long,
+                      class = "numeric")
+  testthat::expect_is(object = test_crime_date$lat,
+                      class = "numeric")
+})
+
 # with 3 points
 poly_df_3 = data.frame(lat = c(52.268, 52.794, 52.130),
                        long = c(0.543, 0.238, 0.478))
@@ -41,6 +48,13 @@ ukp_data_poly_3 <- ukp_crime_poly(poly_df_3)
 
 test_that("ukp_crime_poly is a tibble", {
   testthat::expect_is(ukp_data_poly_3, "tbl_df")
+})
+
+test_that("ukp_crime_poly returns lat and long that are numeric", {
+  testthat::expect_is(object = ukp_data_poly_3$long,
+                      class = "numeric")
+  testthat::expect_is(object = ukp_data_poly_3$lat,
+                      class = "numeric")
 })
 
 # with 4 points

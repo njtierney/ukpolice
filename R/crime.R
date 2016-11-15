@@ -68,8 +68,8 @@ ukp_crime <- function(lat,
 
   # rename the data
   extract_result <- dplyr::rename(extract_result,
-                latitude = location.latitude,
-                longitude = location.longitude,
+                lat = location.latitude,
+                long = location.longitude,
                 street_id = location.street.id,
                 street_name = location.street.name,
                 date = month,
@@ -78,15 +78,15 @@ ukp_crime <- function(lat,
 
 
   final_result <- dplyr::mutate(extract_result,
-                                latitude = as.numeric(latitude),
-                                longitude = as.numeric(longitude))
+                                lat = as.numeric(lat),
+                                long = as.numeric(long))
 
   final_result <- dplyr::select(final_result,
                                 category,
                                 persistent_id,
                                 date,
-                                latitude,
-                                longitude,
+                                lat,
+                                long,
                                 street_id,
                                 street_name,
                                 context,
@@ -169,15 +169,37 @@ ukp_crime_poly <- function(poly_df,
   extract_result <- purrr::map_df(.x = result$content,
                                   .f = ukpolice:::ukp_crime_unlist)
 
-  final_result <-
-    dplyr::rename(extract_result,
-                  latitude = location.latitude,
-                  longitude = location.longitude,
-                  street_id = location.street.id,
-                  street_name = location.street.name,
-                  date = month,
-                  outcome_category = outcome_status.category,
-                  outcome_date = outcome_status.date)
+  # rename the data
+  extract_result <- dplyr::rename(extract_result,
+                                  lat = location.latitude,
+                                  long = location.longitude,
+                                  street_id = location.street.id,
+                                  street_name = location.street.name,
+                                  date = month,
+                                  outcome_status = outcome_status.category,
+                                  outcome_date = outcome_status.date)
+
+  # ensure that lat and long are numeric
+  final_result <- dplyr::mutate(extract_result,
+                                lat = as.numeric(lat),
+                                long = as.numeric(long))
+
+  final_result <- dplyr::select(final_result,
+                                category,
+                                persistent_id,
+                                date,
+                                lat,
+                                long,
+                                street_id,
+                                street_name,
+                                context,
+                                id,
+                                location_type,
+                                location_subtype,
+                                outcome_status,
+                                category)
+
+  return(final_result)
 
   return(final_result)
 
