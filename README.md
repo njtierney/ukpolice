@@ -25,37 +25,6 @@ devtools::install_github("njtierney/ukpolice")
 Usage
 =====
 
-Neighbourhood
--------------
-
-`ukp_neighbourhood()`, retrieves a list of neighbourhoods for a force, <https://data.police.uk/docs/method/neighbourhoods/>
-
-This returns a tibble with columns `id` and `name`.
-
-``` r
-
-library(ukpolice)
-ukp_neighbourhood("leicestershire")
-#> No encoding supplied: defaulting to UTF-8.
-#> # A tibble: 67 × 2
-#>       id                           name
-#>    <chr>                          <chr>
-#> 1   NC04                    City Centre
-#> 2   NC66               Cultural Quarter
-#> 3   NC67                      Riverside
-#> 4   NC68                 Clarendon Park
-#> 5   NE09                 Belgrave South
-#> 6   NE10                 Belgrave North
-#> 7   NE11                    Rushey Mead
-#> 8   NE12                    Humberstone
-#> 9   NE13 Northfields, Tailby and Morton
-#> 10  NE14                     Thurncourt
-#> # ... with 57 more rows
-```
-
--   `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force).
--   `name` is the name for the neighbourhood.
-
 Crime
 -----
 
@@ -64,6 +33,7 @@ Crime
 When no date is specified, it uses the latest month available, which can be found using `ukp_last_update()`.
 
 ``` r
+library(ukpolice)
 
 crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
 #> No encoding supplied: defaulting to UTF-8.
@@ -118,6 +88,12 @@ This is still a little buggy at the moment as it returns blank columns for varia
 poly_df_3 <- data.frame(lat = c(52.268, 52.794, 52.130),
                         long = c(0.543, 0.238, 0.478))
 
+poly_df_3
+#>      lat  long
+#> 1 52.268 0.543
+#> 2 52.794 0.238
+#> 3 52.130 0.478
+
 ukp_data_poly_3 <- ukp_crime_poly(poly_df_3)
 #> No encoding supplied: defaulting to UTF-8.
 
@@ -135,6 +111,36 @@ head(ukp_data_poly_3)
 #> #   street_id <chr>, street_name <chr>, date <chr>, persistent_id <chr>,
 #> #   outcome_category <chr>, outcome_date <chr>
 ```
+
+Neighbourhood
+-------------
+
+`ukp_neighbourhood()`, retrieves a list of neighbourhoods for a force, <https://data.police.uk/docs/method/neighbourhoods/>
+
+This returns a tibble with columns `id` and `name`.
+
+``` r
+
+ukp_neighbourhood("leicestershire")
+#> No encoding supplied: defaulting to UTF-8.
+#> # A tibble: 67 × 2
+#>       id                           name
+#>    <chr>                          <chr>
+#> 1   NC04                    City Centre
+#> 2   NC66               Cultural Quarter
+#> 3   NC67                      Riverside
+#> 4   NC68                 Clarendon Park
+#> 5   NE09                 Belgrave South
+#> 6   NE10                 Belgrave North
+#> 7   NE11                    Rushey Mead
+#> 8   NE12                    Humberstone
+#> 9   NE13 Northfields, Tailby and Morton
+#> 10  NE14                     Thurncourt
+#> # ... with 57 more rows
+```
+
+-   `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force).
+-   `name` is the name for the neighbourhood.
 
 Examples
 ========

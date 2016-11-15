@@ -33,22 +33,6 @@ devtools::install_github("njtierney/ukpolice")
 
 # Usage
 
-## Neighbourhood
-
-`ukp_neighbourhood()`, retrieves a list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
-
-This returns a tibble with columns `id` and `name`. 
-
-```{r ukp-neighbourhood}
-
-library(ukpolice)
-ukp_neighbourhood("leicestershire")
-
-```
-
-- `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force). 
-- `name` is the name for the neighbourhood.
-
 ## Crime
 
 `ukp_crime()` draws crimes from within a one mile radius of the location.
@@ -56,6 +40,7 @@ ukp_neighbourhood("leicestershire")
 When no date is specified, it uses the latest month available, which can be found using `ukp_last_update()`.
 
 ```{r crime-example}
+library(ukpolice)
 
 crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
 
@@ -86,12 +71,30 @@ This is still a little buggy at the moment as it returns blank columns for varia
 poly_df_3 <- data.frame(lat = c(52.268, 52.794, 52.130),
                         long = c(0.543, 0.238, 0.478))
 
+poly_df_3
+
 ukp_data_poly_3 <- ukp_crime_poly(poly_df_3)
 
 head(ukp_data_poly_3)
 
 ```
 
+
+
+## Neighbourhood
+
+`ukp_neighbourhood()`, retrieves a list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
+
+This returns a tibble with columns `id` and `name`. 
+
+```{r ukp-neighbourhood}
+
+ukp_neighbourhood("leicestershire")
+
+```
+
+- `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force). 
+- `name` is the name for the neighbourhood.
 
 # Examples
 
