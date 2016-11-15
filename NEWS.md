@@ -1,3 +1,10 @@
+# ukpolice 0.0.0.9200 (2016-11-15)
+
+## MINOR IMPROVEMENTS
+
+* `ukp_crime_poly()` now takes a data.frame of long/lat points instead of an long character vector. This is due to the utility function `ukp_poly_paste`.
+* added `ukp_geo_chull` which takes a data.frame and some lon/lat names and provides the dataframe which contains the convex hull of points. This can then be fed into `ukp_crime_poly()`.
+
 # ukpolice 0.0.0.9100 (2016-11-14)
 
 ## NEW FEATURES
