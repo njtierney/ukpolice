@@ -13,7 +13,8 @@ test_that("ukp_neighbourhoods returns two columns named 'id' and 'name'",{
   testthat::expect_named(test_neighbours, expected = c("id", "name"))
 })
 
-test_that("ukp_neighbourhood_team returns two columns named 'force' and 'neighbourhood'",{
-  testthat::expect_named(test_neighbour_force, expected = c("force", "neighbourhood"))
+test_that("ukp_neighbourhood_team returns columns 'force' and 'neighbourhood'",{
+  testthat::expect_named(test_neighbour_force,
+                         expected = c("force", "neighbourhood"))
 
 })
