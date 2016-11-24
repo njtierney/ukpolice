@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils_crime.R
 \name{ukp_geo_chull}
 \alias{ukp_geo_chull}
-\title{ukp_geo_chull_paste}
+\title{ukp_geo_chull}
 \usage{
 ukp_geo_chull(data, long, lat)
 }

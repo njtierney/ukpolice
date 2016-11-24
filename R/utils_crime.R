@@ -65,7 +65,7 @@ ukp_poly_paste <- function(data,
   return(paste(poly_paste$chull_paste, collapse = ":"))
 
 }
-#' ukp_geo_chull_paste
+#' ukp_geo_chull
 #'
 #' compute the convex hull of some lon/lat points
 #'
@@ -108,9 +108,45 @@ ukp_geo_chull <- function(data,
   #                              lat_name)
 
   return(data_chull)
+}
   # ukp_poly_paste(data_chull, data_chull[[long]], data_chull[[lat]])
 
-}
+  # potential arguments for the chull widening arguments -------------------
+    # hull is the subset of data that contains the convex hull
+    # centroid is the centre point, created from
+  # library(maxcovr)
+  # library(ukpolice)
+  # library(rgeos)
+  # library(sp)
+  # library(tidyverse)
+  # identify the polygon you want to draw
+  # poly_string <- ukp_geo_chull(data = york,
+  #                              long = long,
+  #                              lat = lat)
+
+  # requires a matrix....
+  # need tor read up on what these steps do, and what I could extend.
+  # centroid <- sp::Polygon(poly_string) %>%
+  #   sp::SpatialPoints() %>%
+  #   rgeos::gCentroid() %>%
+  #   data.frame()
+
+
+  # z is the size of the hull widening.
+  # z <- 1
+
+#   newhull <- cbind(hull, centroid) %>%
+#     mutate(dx = `1` - x,
+#            dy = `2` - y) %>%
+#     # euclidean distance
+#     mutate(dr = sqrt(dx^2 + dy^2),
+#            dx = dx/dr,
+#            dy = dy/dr) %>%
+#     mutate(newx = `1` + z*dx,
+#            newy = `2` + z*dy)
+#
+#
+# }
 
 # library(tidyverse)
 # head_york <- head(york)
@@ -122,5 +158,5 @@ ukp_geo_chull <- function(data,
 # geo_chull_paste(york,
 #                 long = york$long,
 #                 lat = york$lat)
-#
 # library(leaflet)
+
