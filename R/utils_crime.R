@@ -100,7 +100,7 @@ ukp_geo_chull <- function(data,
   long_name <- deparse(substitute(long))
   lat_name <- deparse(substitute(lat))
 
-  data_chull <- data[chull(data[[long_name]], data[[lat_name]]), ]
+  data_chull <- data[grDevices::chull(data[[long_name]], data[[lat_name]]), ]
 
   # unsure if I really need to subset the data...
   # data_chull <- dplyr::select_(data_chull,

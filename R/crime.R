@@ -167,7 +167,7 @@ ukp_crime_poly <- function(poly_df,
   } # end ifelse
 
   extract_result <- purrr::map_df(.x = result$content,
-                                  .f = ukpolice:::ukp_crime_unlist)
+                                  .f = ukp_crime_unlist)
 
   # rename the data
   extract_result <- dplyr::rename(extract_result,
