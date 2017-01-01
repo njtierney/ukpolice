@@ -2,7 +2,7 @@
 % Please edit documentation in R/crime.R
 \name{ukp_crime}
 \alias{ukp_crime}
-\title{ukp_crime}
+\title{Find street level crime within a specified distance or area}
 \usage{
 ukp_crime(lat, lng, date = NULL, ...)
 }

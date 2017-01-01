@@ -2,7 +2,7 @@
 % Please edit documentation in R/neighbourhoods.R
 \name{ukp_neighbourhood}
 \alias{ukp_neighbourhood}
-\title{neighbourhood related API calls}
+\title{Return the list of neighbourhoods for a force.}
 \usage{
 ukp_neighbourhood(neighbourhood, ...)
 }
@@ -15,10 +15,7 @@ ukp_neighbourhood(neighbourhood, ...)
 tibble with columns id and name. id is a Police force specific team identifier, note that this identifier is not unique and may also be used by a different force. Name is the name for the neighbourhood
 }
 \description{
-ukp_neighbourhood
-}
-\details{
-ukp_neighbourhood retuns the list of neighbourhoods for a force, \url{https://data.police.uk/docs/method/neighbourhoods/}
+\code{ukp_neighbourhood} retuns the list of neighbourhoods for a force, \url{https://data.police.uk/docs/method/neighbourhoods/}
 }
 \examples{
 

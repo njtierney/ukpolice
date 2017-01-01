@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils_crime.R
 \name{ukp_crime_unlist}
 \alias{ukp_crime_unlist}
-\title{ukp_crime_unlist}
+\title{Unlist and clean crime data}
 \usage{
 ukp_crime_unlist(result_content)
 }
@@ -13,6 +13,6 @@ ukp_crime_unlist(result_content)
 data.frame
 }
 \description{
-Utility function to clean and unlist the data extracted from the crime data
+\code{ukp_crime_unlist} is a utility function to clean and unlist the data extracted from the crime data.
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{ukp_last_update}
 \alias{ukp_last_update}
-\title{ukp_last_update}
+\title{Find the date of the latest update from the UK Police databse}
 \usage{
 ukp_last_update(...)
 }
@@ -13,6 +13,6 @@ ukp_last_update(...)
 date	Month of latest crime data in ISO format. The day is irrelevant and is only there to keep a standard formatted date. Read more at https://data.police.uk/docs/method/crime-last-updated/
 }
 \description{
-Crime data in the API is updated once a month. Find out when it was last updated.
+Crime data in the API is updated once a month. Find out when it was last updated using \code{ukp_last_update}.
 }
 

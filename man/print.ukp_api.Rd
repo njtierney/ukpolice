@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{print.ukp_api}
 \alias{print.ukp_api}
-\title{print method for ukpolice_api}
+\title{Print method for ukpolice_api}
 \usage{
 \method{print}{ukp_api}(x, ...)
 }
@@ -15,6 +15,6 @@
 a special print method lifted from https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html
 }
 \description{
-print method for ukpolice_api
+Print method for ukpolice_api
 }
 

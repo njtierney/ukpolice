@@ -1,8 +1,8 @@
-#' neighbourhood related API calls
+# neighbourhood related API calls
 #'
-#' ukp_neighbourhood
+#' Return the list of neighbourhoods for a force.
 #'
-#' ukp_neighbourhood retuns the list of neighbourhoods for a force, \url{https://data.police.uk/docs/method/neighbourhoods/}
+#' \code{ukp_neighbourhood} retuns the list of neighbourhoods for a force, \url{https://data.police.uk/docs/method/neighbourhoods/}
 #'
 #' @param neighbourhood a text string of a neighbourhood in the UK
 #' @param ... further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (\url{https://cran.r-project.org/web/packages/httr/}) and (\url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}).
@@ -23,7 +23,7 @@ ukp_neighbourhood <- function(neighbourhood, ...){
   dplyr::bind_rows(result$content)
 
 }
-#' ukp_neighbourhood_location
+#' Find the assoiate neighbourhood code with a long/lat string
 #'
 #' \code{ukp_neighbourhood_location} takes a longitude/latitude string and finds the associated neighbourhood code associated with that. Read more here https://data.police.uk/docs/method/neighbourhood-locate/
 #'

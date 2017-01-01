@@ -1,5 +1,3 @@
-#' forces
-#'
 #' Forces
 #'
 #' A list of all the police forces available via the API. Unique force identifiers obtained here are used in requests for force-specific data via other methods.

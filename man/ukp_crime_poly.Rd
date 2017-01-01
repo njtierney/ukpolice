@@ -2,7 +2,7 @@
 % Please edit documentation in R/crime.R
 \name{ukp_crime_poly}
 \alias{ukp_crime_poly}
-\title{ukp_crime_poly}
+\title{Extract crime areas within a polygon}
 \usage{
 ukp_crime_poly(poly_df, date = NULL, ...)
 }
@@ -14,7 +14,7 @@ ukp_crime_poly(poly_df, date = NULL, ...)
 \item{...}{further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation \url{https://cran.r-project.org/web/packages/httr/} and \url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}.}
 }
 \description{
-Extract the crime areas within a polygon
+Extract crime areas within a polygon
 }
 \note{
 further documentation here: \url{https://data.police.uk/docs/method/crime-street/}

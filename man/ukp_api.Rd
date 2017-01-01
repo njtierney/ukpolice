@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{ukp_api}
 \alias{ukp_api}
-\title{ukpolice_api}
+\title{ukpolice API call}
 \usage{
 ukp_api(path, ...)
 }
@@ -15,7 +15,7 @@ ukp_api(path, ...)
 a ukpolice_api object
 }
 \description{
-ukpolice_api
+\code{ukp_api} is the basic building block for making requests out to the uk police database.
 }
 \note{
 Regaring authentication, the Police API no longer requires authentication. If a request succeeds, the API will return a 200 status code. If a request fails, the API will return a non-200 status code.

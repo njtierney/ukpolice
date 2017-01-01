@@ -2,7 +2,7 @@
 % Please edit documentation in R/neighbourhoods.R
 \name{ukp_neighbourhood_location}
 \alias{ukp_neighbourhood_location}
-\title{ukp_neighbourhood_location}
+\title{Find the assoiate neighbourhood code with a long/lat string}
 \usage{
 ukp_neighbourhood_location(lat_long, ...)
 }

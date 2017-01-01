@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils_crime.R
 \name{ukp_geo_chull}
 \alias{ukp_geo_chull}
-\title{ukp_geo_chull}
+\title{Compute convex hull of long/lat points}
 \usage{
 ukp_geo_chull(data, long, lat)
 }
@@ -14,26 +14,19 @@ ukp_geo_chull(data, long, lat)
 \item{lat}{latitude}
 }
 \value{
-a
+a dataframe with the positions for the polygon.
 }
 \description{
-compute the convex hull of some lon/lat points
+\code{ukp_geo_chull} computes the convex hull of some lon/lat points, returning a dataframe of the polygon position
 }
 \examples{
 
 \dontrun{
-
 library(maxcovr)
 
-# identify the polygon you want to draw
-poly_string <- ukp_geo_chull(data = york,
-                             long = long,
-                             lat = lat)
-
-ukp_crime_poly()
-
-
+ukp_geo_chull(york,
+              long,
+              lat)
 }
-
 }
 

@@ -1,6 +1,6 @@
 # Street level crimes ----------------------------------------------------------
-#'
-#' ukp_crime
+
+#' Find street level crime within a specified distance or area
 #'
 #' Crimes at street-level; either within a 1 mile radius of a single point, or within a custom area. The street-level crimes returned in the API are only an approximation of where the actual crimes occurred, they are not the exact locations. See the about page (\url{https://data.police.uk/about/#location-anonymisation}) for more information about location anonymisation. Note that crime levels may appear lower in Scotland, as only the British Transport Police provide this data.
 #'
@@ -100,9 +100,7 @@ ukp_crime <- function(lat,
 
 } # end function
 
-#' ukp_crime_poly
-#'
-#' Extract the crime areas within a polygon
+#' Extract crime areas within a polygon
 #'
 #' @param poly_df dataframe containing the lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. ukp_crime_poly converts the dataframe into lat/lng pairs, separated by colons: [lat],[lng]:[lat],[lng]:[lat],[lng]. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.
 #' @param date, Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"
@@ -198,8 +196,6 @@ ukp_crime_poly <- function(poly_df,
                                 location_subtype,
                                 outcome_status,
                                 category)
-
-  return(final_result)
 
   return(final_result)
 
