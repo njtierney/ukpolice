@@ -1,8 +1,8 @@
 # Utility functions used by the crime functions --------------------------------
 
-#' ukp_crime_unlist
+#' Unlist and clean crime data
 #'
-#' Utility function to clean and unlist the data extracted from the crime data
+#' \code{ukp_crime_unlist} is a utility function to clean and unlist the data extracted from the crime data.
 #'
 #' @param result_content a result from the ukp_api
 #'
@@ -30,10 +30,9 @@ ukp_crime_unlist <- function(result_content){
 
 } # end
 
-#' ukp_poly_paste
+#' Format long/lat numbers into the right string
 #'
-#' Takes a dataframe oif longitude and latitude and pastes them into the correct
-#'     format required for the ukpolice API
+#' \code{ukp_poly_paste} takes a dataframe of longitude and latitude and pastes them into the correct format required for the ukpolice API
 #'
 #' @param data a dataframe
 #' @param long character
@@ -65,37 +64,37 @@ ukp_poly_paste <- function(data,
   return(paste(poly_paste$chull_paste, collapse = ":"))
 
 }
-#' ukp_geo_chull
+#' Compute convex hull of long/lat points
 #'
-#' compute the convex hull of some lon/lat points
+#'
+#' \code{ukp_geo_chull} computes the convex hull of some lon/lat points, returning a dataframe of the polygon position
 #'
 #' @param data a dataframe
 #' @param long longitude
 #' @param lat latitude
 #'
-#' @return a
+#' @return a dataframe with the positions for the polygon.
 #'
 #'
 #' @examples
 #'
 #' \dontrun{
-#'
 #' library(maxcovr)
 #'
-#' # identify the polygon you want to draw
-#' poly_string <- ukp_geo_chull(data = york,
-#'                              long = long,
-#'                              lat = lat)
-#'
-#' ukp_crime_poly()
-#'
-#'
+#' ukp_geo_chull(york,
+#'               long,
+#'               lat)
 #' }
-#'
 #' @export
 ukp_geo_chull <- function(data,
                           long,
                           lat){
+
+  if (is.data.frame(data) == FALSE){
+    stop("Input must be a data.frame", call. = FALSE)
+  } else if ( (is.numeric(long) | is.numeric(lat)) == FALSE){
+    stop("Long or Lat must be numeric")
+  }
 
   long_name <- deparse(substitute(long))
   lat_name <- deparse(substitute(lat))
@@ -147,16 +146,3 @@ ukp_geo_chull <- function(data,
 #
 #
 # }
-
-# library(tidyverse)
-# head_york <- head(york)
-#
-# poly_paste(head_york,
-#            long = head_york$long,
-#            lat = head_york$lat)
-#
-# geo_chull_paste(york,
-#                 long = york$long,
-#                 lat = york$lat)
-# library(leaflet)
-
