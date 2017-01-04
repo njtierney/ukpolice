@@ -21,4 +21,5 @@ Imports:
     purrr
 RoxygenNote: 5.0.1
 Suggests: covr,
-    testthat
+    testthat,
+    maxcovr
