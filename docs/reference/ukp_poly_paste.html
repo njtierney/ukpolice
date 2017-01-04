@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Print method for ukpolice_api — print.ukp_api • ukpolice</title>
+<title>Format long/lat numbers into the right string — ukp_poly_paste • ukpolice</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -69,29 +69,39 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Print method for ukpolice_api</h1>
+    <h1>Format long/lat numbers into the right string</h1>
     </div>
 
     
-    <p>Print method for ukpolice_api</p>
+    <p><code>ukp_poly_paste</code> takes a dataframe of longitude and latitude and pastes them into the correct format required for the ukpolice API</p>
     
 
-    <pre><span class='co'># S3 method for ukp_api</span>
-<span class='fu'>print</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>ukp_poly_paste</span>(<span class='no'>data</span>, <span class='no'>long</span>, <span class='no'>lat</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd>object of class &quot;ukp_api&quot;</dd>
-      <dt>...</dt>
-      <dd>further arguments passed to or from other methods. For example, verbose option can be added with ukp_api(&quot;call&quot;, config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).</dd>
+      <dt>data</dt>
+      <dd>a dataframe</dd>
+      <dt>long</dt>
+      <dd>character</dd>
+      <dt>lat</dt>
+      <dd>character</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a special print method lifted from https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html</p>
+    <p>character vector: &quot;lat_1,long_1:lat_2,long_2:...,lat_n,long_n&quot;</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'>## Not run: ------------------------------------</span>
+<span class='co'># </span>
+<span class='co'># library(maxcovr)</span>
+<span class='co'># </span>
+<span class='co'># ukp_poly_paste_2(york, "long", "lat")</span>
+<span class='co'># </span>
+<span class='co'>## ---------------------------------------------</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -99,7 +109,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

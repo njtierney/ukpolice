@@ -40,20 +40,20 @@ crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
 
 head(crime_data)
 #> # A tibble: 6 × 12
-#>                category persistent_id    date latitude longitude street_id
+#>                category persistent_id    date      lat      long street_id
 #>                   <chr>         <chr>   <chr>    <dbl>     <dbl>     <chr>
-#> 1 anti-social-behaviour               2016-09 52.62159 -1.113536    882481
-#> 2 anti-social-behaviour               2016-09 52.63672 -1.132898    883359
-#> 3 anti-social-behaviour               2016-09 52.63074 -1.114858    883081
-#> 4 anti-social-behaviour               2016-09 52.63388 -1.117602    883206
-#> 5 anti-social-behaviour               2016-09 52.62442 -1.150485    882275
-#> 6 anti-social-behaviour               2016-09 52.63945 -1.123165    883269
+#> 1 anti-social-behaviour               2016-11 52.62754 -1.129268    883245
+#> 2 anti-social-behaviour               2016-11 52.63707 -1.131414    883413
+#> 3 anti-social-behaviour               2016-11 52.64173 -1.137336    884352
+#> 4 anti-social-behaviour               2016-11 52.64155 -1.121290    884331
+#> 5 anti-social-behaviour               2016-11 52.63127 -1.110858    883116
+#> 6 anti-social-behaviour               2016-11 52.61903 -1.116896    882450
 #> # ... with 6 more variables: street_name <chr>, context <chr>, id <chr>,
 #> #   location_type <chr>, location_subtype <chr>, outcome_status <chr>
 
 ukp_last_update()
 #> No encoding supplied: defaulting to UTF-8.
-#> [1] "2016-09"
+#> [1] "2016-11"
 ```
 
 When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime()` only allows for searching of that current month.
@@ -67,7 +67,7 @@ crime_data_date <- ukp_crime(lat = 52.629729,
 
 head(crime_data_date)
 #> # A tibble: 6 × 12
-#>                category persistent_id    date latitude longitude street_id
+#>                category persistent_id    date      lat      long street_id
 #>                   <chr>         <chr>   <chr>    <dbl>     <dbl>     <chr>
 #> 1 anti-social-behaviour               2016-03 52.64332 -1.123841    884316
 #> 2 anti-social-behaviour               2016-03 52.64332 -1.123841    884316
@@ -98,18 +98,17 @@ ukp_data_poly_3 <- ukp_crime_poly(poly_df_3)
 #> No encoding supplied: defaulting to UTF-8.
 
 head(ukp_data_poly_3)
-#> # A tibble: 6 × 13
-#>                category context       id location_subtype location_type
-#>                   <chr>   <chr>    <chr>            <chr>         <chr>
-#> 1 anti-social-behaviour         51259842                          Force
-#> 2 anti-social-behaviour         51257791                          Force
-#> 3 anti-social-behaviour         51006452                          Force
-#> 4 anti-social-behaviour         51011212                          Force
-#> 5 anti-social-behaviour         51009892                          Force
-#> 6 anti-social-behaviour         51258293                          Force
-#> # ... with 8 more variables: latitude <chr>, longitude <chr>,
-#> #   street_id <chr>, street_name <chr>, date <chr>, persistent_id <chr>,
-#> #   outcome_category <chr>, outcome_date <chr>
+#> # A tibble: 6 × 12
+#>                category persistent_id    date      lat     long street_id
+#>                   <chr>         <chr>   <chr>    <dbl>    <dbl>     <chr>
+#> 1 anti-social-behaviour               2016-11 52.32107 0.442209   1141565
+#> 2 anti-social-behaviour               2016-11 52.30487 0.494963   1141325
+#> 3 anti-social-behaviour               2016-11 52.34834 0.466663   1142004
+#> 4 anti-social-behaviour               2016-11 52.30525 0.490876   1141332
+#> 5 anti-social-behaviour               2016-11 52.30889 0.499972   1141317
+#> 6 anti-social-behaviour               2016-11 52.30487 0.494963   1141325
+#> # ... with 6 more variables: street_name <chr>, context <chr>, id <chr>,
+#> #   location_type <chr>, location_subtype <chr>, outcome_status <chr>
 ```
 
 Neighbourhood
@@ -156,6 +155,9 @@ library(dplyr)
 #> The following objects are masked from 'package:stats':
 #> 
 #>     filter, lag
+#> The following object is masked from 'package:testthat':
+#> 
+#>     matches
 #> The following objects are masked from 'package:base':
 #> 
 #>     intersect, setdiff, setequal, union
@@ -191,7 +193,7 @@ crime_data %>%
   leaflet() %>%
   addTiles() %>%
   addCircleMarkers(popup = ~category)
-#> Assuming 'longitude' and 'latitude' are longitude and latitude, respectively
+#> Assuming 'long' and 'lat' are longitude and latitude, respectively
 ```
 
 ![](README-leaflet-example-popup-1.png)

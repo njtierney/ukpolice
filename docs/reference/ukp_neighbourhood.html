@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>neighbourhood related API calls — ukp_neighbourhood • ukpolice</title>
+<title>Return the list of neighbourhoods for a force. — ukp_neighbourhood • ukpolice</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -69,11 +69,11 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>neighbourhood related API calls</h1>
+    <h1>Return the list of neighbourhoods for a force.</h1>
     </div>
 
     
-    <p>ukp_neighbourhood</p>
+    <p><code>ukp_neighbourhood</code> retuns the list of neighbourhoods for a force, <a href = 'https://data.police.uk/docs/method/neighbourhoods/'>https://data.police.uk/docs/method/neighbourhoods/</a></p>
     
 
     <pre><span class='fu'>ukp_neighbourhood</span>(<span class='no'>neighbourhood</span>, <span class='no'>...</span>)</pre>
@@ -83,16 +83,12 @@
       <dt>neighbourhood</dt>
       <dd>a text string of a neighbourhood in the UK</dd>
       <dt>...</dt>
-      <dd>further arguments passed to or from other methods. For example, verbose option can be added with ukp_api(&quot;call&quot;, config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).</dd>
+      <dd>further arguments passed to or from other methods. For example, verbose option can be added with ukp_api(&quot;call&quot;, config = httr::verbose()). See more in ?httr::GET documentation (<a href = 'https://cran.r-project.org/web/packages/httr/'>https://cran.r-project.org/web/packages/httr/</a>) and (<a href = 'https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html'>https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html</a>).</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>tibble with columns id and name. id is a Police force specific team identifier, note that this identifier is not unique and may also be used by a different force. Name is the name for the neighbourhood</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>ukp_neighbourhood retuns the list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -121,8 +117,6 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
