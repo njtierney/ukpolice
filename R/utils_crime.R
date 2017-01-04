@@ -70,8 +70,8 @@ ukp_poly_paste <- function(data,
 #' \code{ukp_geo_chull} computes the convex hull of some lon/lat points, returning a dataframe of the polygon position
 #'
 #' @param data a dataframe
-#' @param long longitude
-#' @param lat latitude
+#' @param long longitude, a character naming the long name
+#' @param lat latitude, a character naming the lat name
 #'
 #' @return a dataframe with the positions for the polygon.
 #'
@@ -82,8 +82,8 @@ ukp_poly_paste <- function(data,
 #' library(maxcovr)
 #'
 #' ukp_geo_chull(york,
-#'               long,
-#'               lat)
+#'               "long",
+#'               "lat")
 #' }
 #' @export
 ukp_geo_chull <- function(data,
@@ -92,14 +92,15 @@ ukp_geo_chull <- function(data,
 
   if (is.data.frame(data) == FALSE){
     stop("Input must be a data.frame", call. = FALSE)
-  } else if ( (is.numeric(long) | is.numeric(lat)) == FALSE){
-    stop("Long or Lat must be numeric")
+  } else if ( (is.character(long) | is.character(lat)) == FALSE){
+    stop("Long or Lat must be characters")
   }
 
-  long_name <- deparse(substitute(long))
-  lat_name <- deparse(substitute(lat))
+  # long_name <- deparse(substitute(long))
+  # lat_name <- deparse(substitute(lat))
 
-  data_chull <- data[grDevices::chull(data[[long_name]], data[[lat_name]]), ]
+  # data_chull <- data[grDevices::chull(data[[long_name]], data[[lat_name]]), ]
+  data_chull <- data[grDevices::chull(data[[long]], data[[lat]]), ]
 
   # unsure if I really need to subset the data...
   # data_chull <- dplyr::select_(data_chull,

@@ -9,9 +9,9 @@ ukp_geo_chull(data, long, lat)
 \arguments{
 \item{data}{a dataframe}
 
-\item{long}{longitude}
+\item{long}{longitude, a character naming the long name}
 
-\item{lat}{latitude}
+\item{lat}{latitude, a character naming the lat name}
 }
 \value{
 a dataframe with the positions for the polygon.
@@ -25,8 +25,8 @@ a dataframe with the positions for the polygon.
 library(maxcovr)
 
 ukp_geo_chull(york,
-              long,
-              lat)
+              "long",
+              "lat")
 }
 }
 
