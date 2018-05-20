@@ -1,3 +1,17 @@
+# ukpolice 0.0.1.9000 (2018-05-20)
+
+## Minor Improvements
+
+* Minor clean ups from the past 18 months:
+  * removed maxcovr as suggestions
+  * used markdown in roxygen
+  * tweak README and README figures
+  * Added a vignette
+
+## New Features
+
+* Added the "york" dataset, which contains information on listed buildings in the city of York, UK. This is used to demonstrate defining polygon around a region and finding crime within in.
+
 # ukpolice 0.0.0.9200 (2016-11-15)
 
 ## MINOR IMPROVEMENTS
