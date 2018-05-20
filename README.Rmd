@@ -14,9 +14,7 @@ knitr::opts_chunk$set(
 # ukpolice
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ukpolice?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ukpolice)[![Travis-CI Build Status](https://travis-ci.org/njtierney/ukpolice.svg?branch=master)](https://travis-ci.org/njtierney/ukpolice)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/ukpolice/master.svg)](https://codecov.io/github/njtierney/ukpolice?branch=master)
 
-ukpolice is an R package that facilitates retrieving data from the [UK police database.](https://data.police.uk/)
-
-The data provided by the API contains public sector information licensed under the [Open Government Licence v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+ukpolice is an R package that facilitates retrieving data from the [UK police database.](https://data.police.uk/). The data provided by the API contains public sector information licensed under the [Open Government Licence v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 
 # Installation
 
@@ -29,13 +27,9 @@ remotes::install_github("njtierney/ukpolice")
 
 ```
 
-# Usage
+# Get the crime data with `ukp_crime`
 
-## Crime
-
-`ukp_crime()` draws crimes from within a one mile radius of the location.
-
-When no date is specified, it uses the latest month available, which can be found using `ukp_last_update()`.
+`ukp_crime()` draws crimes from within a one mile radius of the location. When no date is specified, it uses the latest month available, which can be found using `ukp_last_update()`.
 
 ```{r crime-example}
 library(ukpolice)
@@ -47,6 +41,8 @@ head(crime_data)
 ukp_last_update()
 
 ```
+
+## Specify a month and year for data
 
 When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime()` only allows for searching of that current month.
 
@@ -62,39 +58,7 @@ head(crime_data_date)
 
 This is still a little buggy at the moment as it returns blank columns for variables like `persistent_id` and `context`, `location_subtype`, and `outcome_status`. This issue is currently logged at [issue #11](https://github.com/njtierney/ukpolice/issues/11).
 
-`ukp_crime_poly()` finds all crimes within the polygon provided by a dataframe with columns names "lat" and "long".
-
-```{r crime-data-poly-example}
-
-poly_df_3 <- data.frame(lat = c(52.268, 52.794, 52.130),
-                        long = c(0.543, 0.238, 0.478))
-
-poly_df_3
-
-ukp_data_poly_3 <- ukp_crime_poly(poly_df_3)
-
-head(ukp_data_poly_3)
-
-```
-
-
-
-## Neighbourhood
-
-`ukp_neighbourhood()`, retrieves a list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
-
-This returns a tibble with columns `id` and `name`. 
-
-```{r ukp-neighbourhood}
-
-ukp_neighbourhood("leicestershire")
-
-```
-
-- `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force). 
-- `name` is the name for the neighbourhood.
-
-# Examples
+# Example usage
 
 ## Explore the number of crime types
 
@@ -115,11 +79,9 @@ crime_data %>%
        title = paste0("Crimes commited in ",crime_data_date$date[1])) +
   coord_flip() +
   theme_minimal()
-  
 ```
 
-
-## Use leaflet
+## Using leaflet
 
 You can add a popup that displays the crime type using the `popup` argument in leaflet.
 
@@ -130,9 +92,16 @@ crime_data %>%
   leaflet() %>%
   addTiles() %>%
   addCircleMarkers(popup = ~category)
-
 ```
 
+# Other use of ukpolice
+
+ukpolice does other things! At the moment other features include:
+
+- Get crime within a polygon with `ukp_crime_poly()`
+- Retrieve a list of neighbourhoods for a police force with `ukp_neighbourhood()`
+
+To see these examples, read the vignette "Getting Started with ukpolice".
 
 ## Code of Conduct
 
