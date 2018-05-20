@@ -2,7 +2,7 @@
 
 #' Unlist and clean crime data
 #'
-#' \code{ukp_crime_unlist} is a utility function to clean and unlist the data extracted from the crime data.
+#' `ukp_crime_unlist` is a utility function to clean and unlist the data extracted from the crime data.
 #'
 #' @param result_content a result from the ukp_api
 #'
@@ -32,7 +32,7 @@ ukp_crime_unlist <- function(result_content){
 
 #' Format long/lat numbers into the right string
 #'
-#' \code{ukp_poly_paste} takes a dataframe of longitude and latitude and pastes them into the correct format required for the ukpolice API
+#' `ukp_poly_paste` takes a dataframe of longitude and latitude and pastes them into the correct format required for the ukpolice API
 #'
 #' @param data a dataframe
 #' @param long character
@@ -43,13 +43,8 @@ ukp_crime_unlist <- function(result_content){
 #' @examples
 #'
 #' \dontrun{
-#'
-#' library(maxcovr)
-#'
-#' ukp_poly_paste_2(york, "long", "lat")
-#'
-#' }
-#'
+#' ukp_poly_paste(york, "long", "lat")
+#'}
 ukp_poly_paste <- function(data,
                            long,
                            lat){
@@ -67,7 +62,7 @@ ukp_poly_paste <- function(data,
 #' Compute convex hull of long/lat points
 #'
 #'
-#' \code{ukp_geo_chull} computes the convex hull of some lon/lat points, returning a dataframe of the polygon position
+#' `ukp_geo_chull` computes the convex hull of some lon/lat points, returning a dataframe of the polygon position
 #'
 #' @param data a dataframe
 #' @param long longitude, a character naming the long name
@@ -78,13 +73,9 @@ ukp_poly_paste <- function(data,
 #'
 #' @examples
 #'
-#' \dontrun{
-#' library(maxcovr)
-#'
 #' ukp_geo_chull(york,
 #'               "long",
 #'               "lat")
-#' }
 #' @export
 ukp_geo_chull <- function(data,
                           long,

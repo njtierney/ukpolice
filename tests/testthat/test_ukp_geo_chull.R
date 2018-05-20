@@ -1,7 +1,5 @@
 context("ukp_geo_chull")
 
-library(maxcovr)
-
 # identify the polygon you want to draw
 
 poly_string <- ukp_geo_chull(data = york,

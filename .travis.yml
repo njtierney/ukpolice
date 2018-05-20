@@ -7,7 +7,6 @@ cache: packages
 # packages needed in the builds
 r_github_packages:
   - rstudio/leaflet
-  - njtierney/maxcovr
 
 after_success:
   - Rscript -e 'covr::codecov()'
