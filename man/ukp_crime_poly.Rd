@@ -7,7 +7,7 @@
 ukp_crime_poly(poly_df, date = NULL, ...)
 }
 \arguments{
-\item{poly_df}{dataframe containing the lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. ukp_crime_poly converts the dataframe into lat/lng pairs, separated by colons: [lat],[lng]:[lat],[lng]:[lat],[lng]. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.}
+\item{poly_df}{dataframe containing the lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. ukp_crime_poly converts the dataframe into lat/lng pairs, separated by colons: \code{lat},\code{lng}:\code{lat},\code{lng}:\code{lat},\code{lng}. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.}
 
 \item{date, }{Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"}
 
@@ -38,4 +38,3 @@ ukp_data_poly_4 <- ukp_crime_poly(poly_df = poly_df_4)
 head(ukp_data_poly_4)
 
 }
-

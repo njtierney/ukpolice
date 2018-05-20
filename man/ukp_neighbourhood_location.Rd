@@ -17,4 +17,3 @@ a tibble
 \description{
 \code{ukp_neighbourhood_location} takes a longitude/latitude string and finds the associated neighbourhood code associated with that. Read more here https://data.police.uk/docs/method/neighbourhood-locate/
 }
-

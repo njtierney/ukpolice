@@ -17,4 +17,3 @@ a special print method lifted from https://cran.r-project.org/web/packages/httr/
 \description{
 Print method for ukpolice_api
 }
-

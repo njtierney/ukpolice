@@ -24,4 +24,3 @@ Regarding API call limits, the Police API call limit operates using a 'leaky buc
 
 Regarding HTTP headers and response codes, If you exceed the limit stated above, the API will return a HTTP 429 (Too Many Requests) response code.
 }
-

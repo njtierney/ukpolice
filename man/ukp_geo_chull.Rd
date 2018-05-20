@@ -21,12 +21,7 @@ a dataframe with the positions for the polygon.
 }
 \examples{
 
-\dontrun{
-library(maxcovr)
-
 ukp_geo_chull(york,
               "long",
               "lat")
 }
-}
-

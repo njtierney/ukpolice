@@ -13,23 +13,23 @@ ukp_crime(lat, lng, date = NULL, ...)
 
 \item{date, }{Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"}
 
-\item{...}{further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (\url{https://cran.r-project.org/web/packages/httr/}) and (\url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}).}
+\item{...}{further arguments passed to or from other methods. For example, verbose option can be added with \code{ukp_api("call", config = httr::verbose())}. See more in ?httr::GET documentation (\url{https://cran.r-project.org/web/packages/httr/}) and (\url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}).}
 }
 \value{
 a tibble with the columns:
 \itemize{
-  \item category: Category of the crime (\url{https://data.police.uk/docs/method/crime-street/})
-  \item persistent_id: 64-character unique identifier for that crime. (This is different to the existing 'id' attribute, which is not guaranteed to always stay the same for each crime.)
-  \item date: Date of the crime YYYY-MM
-  \item latitude: Latitude
-  \item longitude: Longitude
-  \item street_id: Unique identifier for the street
-  \item street_name: Name of the location. This is only an approximation of where the crime happened
-  \item context: Extra information about the crime (if applicable)
-  \item id: ID of the crime. This ID only relates to the API, it is NOT a police identifier
-  \item location_type: The type of the location. Either Force or BTP: Force indicates a normal police force location; BTP indicates a British Transport Police location. BTP locations fall within normal police force boundaries.
-  \item location_subtype: For BTP locations, the type of location at which this crime was recorded.
-  \item outcome_status: The category and date of the latest recorded outcome for the crime
+\item category: Category of the crime (\url{https://data.police.uk/docs/method/crime-street/})
+\item persistent_id: 64-character unique identifier for that crime. (This is different to the existing 'id' attribute, which is not guaranteed to always stay the same for each crime.)
+\item date: Date of the crime YYYY-MM
+\item latitude: Latitude
+\item longitude: Longitude
+\item street_id: Unique identifier for the street
+\item street_name: Name of the location. This is only an approximation of where the crime happened
+\item context: Extra information about the crime (if applicable)
+\item id: ID of the crime. This ID only relates to the API, it is NOT a police identifier
+\item location_type: The type of the location. Either Force or BTP: Force indicates a normal police force location; BTP indicates a British Transport Police location. BTP locations fall within normal police force boundaries.
+\item location_subtype: For BTP locations, the type of location at which this crime was recorded.
+\item outcome_status: The category and date of the latest recorded outcome for the crime
 }
 }
 \description{
@@ -47,4 +47,3 @@ ukp_crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
 head(ukp_crime_data)
 
 }
-

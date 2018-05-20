@@ -22,12 +22,6 @@ character vector: "lat_1,long_1:lat_2,long_2:...,lat_n,long_n"
 \examples{
 
 \dontrun{
-
-library(maxcovr)
-
-ukp_poly_paste_2(york, "long", "lat")
-
+ukp_poly_paste(york, "long", "lat")
 }
-
 }
-

@@ -15,4 +15,3 @@ date	Month of latest crime data in ISO format. The day is irrelevant and is only
 \description{
 Crime data in the API is updated once a month. Find out when it was last updated using \code{ukp_last_update}.
 }
-
