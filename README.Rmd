@@ -11,10 +11,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-# ukpolice
+# ukpolice <img src="man/figures/ukpolice-hex-small.png" align="right" />
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ukpolice?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ukpolice)[![Travis-CI Build Status](https://travis-ci.org/njtierney/ukpolice.svg?branch=master)](https://travis-ci.org/njtierney/ukpolice)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/ukpolice/master.svg)](https://codecov.io/github/njtierney/ukpolice?branch=master)
 
 ukpolice is an R package that facilitates retrieving data from the [UK police database.](https://data.police.uk/). The data provided by the API contains public sector information licensed under the [Open Government Licence v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+
+
+
+_hex sticker police logo "Police" created by Yu luck from the Noun Project, hex sticker made with [hexSticker](https://github.com/GuangchuangYu/hexSticker) package_
 
 # Installation
 

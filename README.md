@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ukpolice
+# ukpolice <img src="man/figures/ukpolice-hex-2.png" align="right" />
 
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ukpolice?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ukpolice)[![Travis-CI
@@ -14,6 +14,10 @@ police database.](https://data.police.uk/). The data provided by the API
 contains public sector information licensed under the [Open Government
 Licence
 v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+
+*hex sticker police logo “Police” created by Yu luck from the Noun
+Project, hex sticker made with
+[hexSticker](https://github.com/GuangchuangYu/hexSticker) package*
 
 # Installation
 
