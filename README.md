@@ -1,36 +1,40 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-ukpolice
-========
 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ukpolice?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ukpolice)[![Travis-CI Build Status](https://travis-ci.org/njtierney/ukpolice.svg?branch=master)](https://travis-ci.org/njtierney/ukpolice)[![Coverage Status](https://img.shields.io/codecov/c/github/njtierney/ukpolice/master.svg)](https://codecov.io/github/njtierney/ukpolice?branch=master)
+# ukpolice
 
-ukpolice is an R package that facilitates retrieving data from the [UK police database.](https://data.police.uk/)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ukpolice?branch=master&svg=true)](https://ci.appveyor.com/project/njtierney/ukpolice)[![Travis-CI
+Build
+Status](https://travis-ci.org/njtierney/ukpolice.svg?branch=master)](https://travis-ci.org/njtierney/ukpolice)[![Coverage
+Status](https://img.shields.io/codecov/c/github/njtierney/ukpolice/master.svg)](https://codecov.io/github/njtierney/ukpolice?branch=master)
 
-The data provided by the API contains public sector information licensed under the [Open Government Licence v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+ukpolice is an R package that facilitates retrieving data from the [UK
+police database.](https://data.police.uk/)
 
-This package is in a very beta stage, and I'm still learning a lot about APIs!
+The data provided by the API contains public sector information licensed
+under the [Open Government Licence
+v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 
-Installation
-============
+# Installation
 
 Install from GitHub
 
 ``` r
 
-#install.packages("devtools")
-devtools::install_github("njtierney/ukpolice")
+#install.packages("remotes")
+remotes::install_github("njtierney/ukpolice")
 ```
 
-Usage
-=====
+# Usage
 
-Crime
------
+## Crime
 
-`ukp_crime()` draws crimes from within a one mile radius of the location.
+`ukp_crime()` draws crimes from within a one mile radius of the
+location.
 
-When no date is specified, it uses the latest month available, which can be found using `ukp_last_update()`.
+When no date is specified, it uses the latest month available, which can
+be found using `ukp_last_update()`.
 
 ``` r
 library(ukpolice)
@@ -39,49 +43,54 @@ crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
 #> No encoding supplied: defaulting to UTF-8.
 
 head(crime_data)
-#> # A tibble: 6 × 12
-#>                category persistent_id    date      lat      long street_id
-#>                   <chr>         <chr>   <chr>    <dbl>     <dbl>     <chr>
-#> 1 anti-social-behaviour               2016-11 52.62754 -1.129268    883245
-#> 2 anti-social-behaviour               2016-11 52.63707 -1.131414    883413
-#> 3 anti-social-behaviour               2016-11 52.64173 -1.137336    884352
-#> 4 anti-social-behaviour               2016-11 52.64155 -1.121290    884331
-#> 5 anti-social-behaviour               2016-11 52.63127 -1.110858    883116
-#> 6 anti-social-behaviour               2016-11 52.61903 -1.116896    882450
-#> # ... with 6 more variables: street_name <chr>, context <chr>, id <chr>,
-#> #   location_type <chr>, location_subtype <chr>, outcome_status <chr>
+#> # A tibble: 6 x 12
+#>   category  persistent_id date    lat  long street_id street_name  context
+#>   <chr>     <chr>         <chr> <dbl> <dbl> <chr>     <chr>        <chr>  
+#> 1 anti-soc… ""            2018…  52.6 -1.13 882346    On or near … ""     
+#> 2 anti-soc… ""            2018…  52.6 -1.13 883351    On or near … ""     
+#> 3 anti-soc… ""            2018…  52.6 -1.13 883408    On or near … ""     
+#> 4 anti-soc… ""            2018…  52.6 -1.13 883313    On or near … ""     
+#> 5 anti-soc… ""            2018…  52.6 -1.11 882420    On or near … ""     
+#> 6 anti-soc… ""            2018…  52.6 -1.13 882336    On or near … ""     
+#> # ... with 4 more variables: id <chr>, location_type <chr>,
+#> #   location_subtype <chr>, outcome_status <chr>
 
 ukp_last_update()
 #> No encoding supplied: defaulting to UTF-8.
-#> [1] "2016-11"
+#> [1] "2018-03"
 ```
 
-When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime()` only allows for searching of that current month.
+When date is specified, it must be in the format “YYYY-MM”. Currently
+`ukp_crime()` only allows for searching of that current month.
 
 ``` r
 
 crime_data_date <- ukp_crime(lat = 52.629729, 
-                        lng = -1.131592,
-                        date = "2016-03")
+                             lng = -1.131592,
+                             date = "2016-03")
 #> No encoding supplied: defaulting to UTF-8.
 
 head(crime_data_date)
-#> # A tibble: 6 × 12
-#>                category persistent_id    date      lat      long street_id
-#>                   <chr>         <chr>   <chr>    <dbl>     <dbl>     <chr>
-#> 1 anti-social-behaviour               2016-03 52.64332 -1.123841    884316
-#> 2 anti-social-behaviour               2016-03 52.64332 -1.123841    884316
-#> 3 anti-social-behaviour               2016-03 52.63354 -1.126977    883379
-#> 4 anti-social-behaviour               2016-03 52.62766 -1.149757    883457
-#> 5 anti-social-behaviour               2016-03 52.62766 -1.149757    883457
-#> 6 anti-social-behaviour               2016-03 52.63981 -1.139118    883235
-#> # ... with 6 more variables: street_name <chr>, context <chr>, id <chr>,
-#> #   location_type <chr>, location_subtype <chr>, outcome_status <chr>
+#> # A tibble: 6 x 12
+#>   category  persistent_id date    lat  long street_id street_name  context
+#>   <chr>     <chr>         <chr> <dbl> <dbl> <chr>     <chr>        <chr>  
+#> 1 anti-soc… ""            2016…  52.6 -1.14 882313    On or near … ""     
+#> 2 anti-soc… ""            2016…  52.6 -1.12 883287    On or near … ""     
+#> 3 anti-soc… ""            2016…  52.6 -1.15 883538    On or near … ""     
+#> 4 anti-soc… ""            2016…  52.6 -1.13 883415    On or near … ""     
+#> 5 anti-soc… ""            2016…  52.6 -1.14 883525    On or near … ""     
+#> 6 anti-soc… ""            2016…  52.6 -1.14 883433    On or near … ""     
+#> # ... with 4 more variables: id <chr>, location_type <chr>,
+#> #   location_subtype <chr>, outcome_status <chr>
 ```
 
-This is still a little buggy at the moment as it returns blank columns for variables like `persistent_id` and `context`, `location_subtype`, and `outcome_status`. This issue is currently logged at [issue \#11](https://github.com/njtierney/ukpolice/issues/11).
+This is still a little buggy at the moment as it returns blank columns
+for variables like `persistent_id` and `context`, `location_subtype`,
+and `outcome_status`. This issue is currently logged at [issue
+\#11](https://github.com/njtierney/ukpolice/issues/11).
 
-`ukp_crime_poly()` finds all crimes within the polygon provided by a dataframe with columns names "lat" and "long".
+`ukp_crime_poly()` finds all crimes within the polygon provided by a
+dataframe with columns names “lat” and “long”.
 
 ``` r
 
@@ -98,23 +107,23 @@ ukp_data_poly_3 <- ukp_crime_poly(poly_df_3)
 #> No encoding supplied: defaulting to UTF-8.
 
 head(ukp_data_poly_3)
-#> # A tibble: 6 × 12
-#>                category persistent_id    date      lat     long street_id
-#>                   <chr>         <chr>   <chr>    <dbl>    <dbl>     <chr>
-#> 1 anti-social-behaviour               2016-11 52.32107 0.442209   1141565
-#> 2 anti-social-behaviour               2016-11 52.30487 0.494963   1141325
-#> 3 anti-social-behaviour               2016-11 52.34834 0.466663   1142004
-#> 4 anti-social-behaviour               2016-11 52.30525 0.490876   1141332
-#> 5 anti-social-behaviour               2016-11 52.30889 0.499972   1141317
-#> 6 anti-social-behaviour               2016-11 52.30487 0.494963   1141325
-#> # ... with 6 more variables: street_name <chr>, context <chr>, id <chr>,
-#> #   location_type <chr>, location_subtype <chr>, outcome_status <chr>
+#> # A tibble: 6 x 12
+#>   category  persistent_id date    lat  long street_id street_name  context
+#>   <chr>     <chr>         <chr> <dbl> <dbl> <chr>     <chr>        <chr>  
+#> 1 anti-soc… ""            2018…  52.3 0.496 1141362   On or near … ""     
+#> 2 anti-soc… ""            2018…  52.3 0.497 1141337   On or near … ""     
+#> 3 anti-soc… ""            2018…  52.3 0.476 1140354   On or near … ""     
+#> 4 anti-soc… ""            2018…  52.3 0.413 557698    On or near … ""     
+#> 5 anti-soc… ""            2018…  52.3 0.413 564411    On or near … ""     
+#> 6 anti-soc… ""            2018…  52.2 0.484 561970    On or near … ""     
+#> # ... with 4 more variables: id <chr>, location_type <chr>,
+#> #   location_subtype <chr>, outcome_status <chr>
 ```
 
-Neighbourhood
--------------
+## Neighbourhood
 
-`ukp_neighbourhood()`, retrieves a list of neighbourhoods for a force, <https://data.police.uk/docs/method/neighbourhoods/>
+`ukp_neighbourhood()`, retrieves a list of neighbourhoods for a force,
+<https://data.police.uk/docs/method/neighbourhoods/>
 
 This returns a tibble with columns `id` and `name`.
 
@@ -122,30 +131,29 @@ This returns a tibble with columns `id` and `name`.
 
 ukp_neighbourhood("leicestershire")
 #> No encoding supplied: defaulting to UTF-8.
-#> # A tibble: 67 × 2
-#>       id                           name
-#>    <chr>                          <chr>
-#> 1   NC04                    City Centre
-#> 2   NC66               Cultural Quarter
-#> 3   NC67                      Riverside
-#> 4   NC68                 Clarendon Park
-#> 5   NE09                 Belgrave South
-#> 6   NE10                 Belgrave North
-#> 7   NE11                    Rushey Mead
-#> 8   NE12                    Humberstone
-#> 9   NE13 Northfields, Tailby and Morton
-#> 10  NE14                     Thurncourt
+#> # A tibble: 67 x 2
+#>    id    name                          
+#>    <chr> <chr>                         
+#>  1 NC04  City Centre                   
+#>  2 NC66  Cultural Quarter              
+#>  3 NC67  Riverside                     
+#>  4 NC68  Clarendon Park                
+#>  5 NE09  Belgrave South                
+#>  6 NE10  Belgrave North                
+#>  7 NE11  Rushey Mead                   
+#>  8 NE12  Humberstone                   
+#>  9 NE13  Northfields, Tailby and Morton
+#> 10 NE14  Thurncourt                    
 #> # ... with 57 more rows
 ```
 
--   `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force).
--   `name` is the name for the neighbourhood.
+  - `id` is a Police force specific team identifier, (note that this
+    identifier is not unique and may also be used by a different force).
+  - `name` is the name for the neighbourhood.
 
-Examples
-========
+# Examples
 
-Explore the number of crime types
----------------------------------
+## Explore the number of crime types
 
 ``` r
 
@@ -155,9 +163,6 @@ library(dplyr)
 #> The following objects are masked from 'package:stats':
 #> 
 #>     filter, lag
-#> The following object is masked from 'package:testthat':
-#> 
-#>     matches
 #> The following objects are masked from 'package:base':
 #> 
 #>     intersect, setdiff, setequal, union
@@ -178,12 +183,12 @@ crime_data %>%
   theme_minimal()
 ```
 
-![](README-count-example-1.png)
+![](man/figures/README-count-example-1.png)<!-- -->
 
-Use leaflet
------------
+## Use leaflet
 
-You can add a popup that displays the crime type using the `popup` argument in leaflet.
+You can add a popup that displays the crime type using the `popup`
+argument in leaflet.
 
 ``` r
 library(leaflet)
@@ -193,12 +198,13 @@ crime_data %>%
   leaflet() %>%
   addTiles() %>%
   addCircleMarkers(popup = ~category)
-#> Assuming 'long' and 'lat' are longitude and latitude, respectively
+#> Assuming "long" and "lat" are longitude and latitude, respectively
 ```
 
-![](README-leaflet-example-popup-1.png)
+![](man/figures/README-leaflet-example-popup-1.png)<!-- -->
 
-Code of Conduct
----------------
+## Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of
+Conduct](CONDUCT.md). By participating in this project you agree to
+abide by its terms.

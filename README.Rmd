@@ -7,7 +7,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/README-"
 )
 ```
 
@@ -18,16 +18,14 @@ ukpolice is an R package that facilitates retrieving data from the [UK police da
 
 The data provided by the API contains public sector information licensed under the [Open Government Licence v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 
-This package is in a very beta stage, and I'm still learning a lot about APIs!
-
 # Installation
 
 Install from GitHub
 
 ```{r install, eval = FALSE}
 
-#install.packages("devtools")
-devtools::install_github("njtierney/ukpolice")
+#install.packages("remotes")
+remotes::install_github("njtierney/ukpolice")
 
 ```
 
@@ -55,8 +53,8 @@ When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime
 ```{r crime-data-date-example}
 
 crime_data_date <- ukp_crime(lat = 52.629729, 
-                        lng = -1.131592,
-                        date = "2016-03")
+                             lng = -1.131592,
+                             date = "2016-03")
 
 head(crime_data_date)
 
