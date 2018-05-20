@@ -1,0 +1,127 @@
+---
+title: "Getting started with ukpolice"
+author: "Nicholas Tierney"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+ukpolice is an R package that facilitates retrieving data from the [UK police database.](https://data.police.uk/). The data provided by the API contains public sector information licensed under the [Open Government Licence v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+
+# Get the crime data with `ukp_crime`
+
+`ukp_crime()` draws crimes from within a one mile radius of the location.
+
+```{r crime-example}
+library(ukpolice)
+
+crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
+
+head(crime_data)
+
+```
+
+When no date is specified, it uses the latest month available, which can be found using `ukp_last_update()`.
+
+```{r ukp-last-update}
+
+ukp_last_update()
+
+```
+
+## Specify a month and year for data
+
+When date is specified, it must be in the format "YYYY-MM". Currently `ukp_crime()` only allows for searching of that current month.
+
+```{r crime-data-date-example}
+
+crime_data_date <- ukp_crime(lat = 52.629729, 
+                             lng = -1.131592,
+                             date = "2016-03")
+
+head(crime_data_date)
+
+```
+
+This is still a little buggy at the moment as it returns blank columns for variables like `persistent_id` and `context`, `location_subtype`, and `outcome_status`. This issue is currently logged at [issue #11](https://github.com/njtierney/ukpolice/issues/11).
+
+# Example usage
+
+## Explore the number of crime types
+
+```{r count-example}
+
+library(dplyr)
+library(ggplot2)
+
+crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
+
+crime_data %>%
+  count(category) %>%
+  ggplot(aes(x = reorder(category, n),
+             y = n)) + 
+  geom_col() + 
+  labs(x = "Crime Type",
+       y = "Number of Crimes",
+       title = paste0("Crimes commited in ",crime_data_date$date[1])) +
+  coord_flip() +
+  theme_minimal()
+  
+```
+
+## Use leaflet
+
+You can add a popup that displays the crime type using the `popup` argument in leaflet.
+
+```{r leaflet-example-popup}
+library(leaflet)
+crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
+crime_data %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(popup = ~category)
+
+```
+
+# Get crime within a polygon
+
+`ukp_crime_poly()` finds all crimes within the polygon provided by a dataframe with columns names "lat" and "long".
+
+```{r crime-data-poly-example}
+
+poly_df_3 <- data.frame(lat = c(52.268, 52.794, 52.130),
+                        long = c(0.543, 0.238, 0.478))
+
+poly_df_3
+
+ukp_data_poly_3 <- ukp_crime_poly(poly_df_3)
+
+head(ukp_data_poly_3)
+
+```
+
+# Neighbourhood information
+
+`ukp_neighbourhood()`, retrieves a list of neighbourhoods for a force, https://data.police.uk/docs/method/neighbourhoods/
+
+This returns a tibble with columns `id` and `name`. 
+
+```{r ukp-neighbourhood}
+
+ukp_neighbourhood("leicestershire")
+
+```
+
+- `id` is a Police force specific team identifier, (note that this identifier is not unique and may also be used by a different force). 
+- `name` is the name for the neighbourhood.
+
