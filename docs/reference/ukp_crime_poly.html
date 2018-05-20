@@ -11,26 +11,38 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
+
+
+<meta property="og:title" content="Extract crime areas within a polygon — ukp_crime_poly" />
+
+<meta property="og:description" content="Extract crime areas within a polygon" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -44,21 +56,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">ukpolice</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">ukpolice</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../articles/getting-started-with-ukpolice.html">Getting Started</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -66,31 +83,42 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Extract crime areas within a polygon</h1>
+    
+    <div class="hidden name"><code>ukp_crime_poly.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Extract crime areas within a polygon</p>
     
+    </div>
 
-    <pre><span class='fu'>ukp_crime_poly</span>(<span class='no'>poly_df</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>ukp_crime_poly</span>(<span class='no'>poly_df</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>poly_df</dt>
-      <dd>dataframe containing the lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. ukp_crime_poly converts the dataframe into lat/lng pairs, separated by colons: [lat],[lng]:[lat],[lng]:[lat],[lng]. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.</dd>
-      <dt>date, </dt>
-      <dd>Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = &quot;2013-01&quot;</dd>
-      <dt>...</dt>
-      <dd>further arguments passed to or from other methods. For example, verbose option can be added with ukp_api(&quot;call&quot;, config = httr::verbose()). See more in ?httr::GET documentation <a href = 'https://cran.r-project.org/web/packages/httr/'>https://cran.r-project.org/web/packages/httr/</a> and <a href = 'https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html'>https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html</a>.</dd>
-    </dl>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>poly_df</th>
+      <td><p>dataframe containing the lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. ukp_crime_poly converts the dataframe into lat/lng pairs, separated by colons: <code>lat</code>,<code>lng</code>:<code>lat</code>,<code>lng</code>:<code>lat</code>,<code>lng</code>. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.</p></td>
+    </tr>
+    <tr>
+      <th>date, </th>
+      <td><p>Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation <a href='https://cran.r-project.org/web/packages/httr/'>https://cran.r-project.org/web/packages/httr/</a> and <a href='https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html'>https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html</a>.</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>further documentation here: <a href = 'https://data.police.uk/docs/method/crime-street/'>https://data.police.uk/docs/method/crime-street/</a></p>
+    <p>further documentation here: <a href='https://data.police.uk/docs/method/crime-street/'>https://data.police.uk/docs/method/crime-street/</a></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -101,32 +129,32 @@
 <span class='no'>poly_df_3</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>lat</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>52.268</span>, <span class='fl'>52.794</span>, <span class='fl'>52.130</span>),
                        <span class='kw'>long</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.543</span>, <span class='fl'>0.238</span>, <span class='fl'>0.478</span>))
 
-<span class='no'>ukp_data_poly_3</span> <span class='kw'>&lt;-</span> <span class='fu'>ukp_crime_poly</span>(<span class='no'>poly_df_3</span>)</div><div class='output co'>#&gt; <span class='message'>No encoding supplied: defaulting to UTF-8.</span></div><div class='input'><span class='fu'>head</span>(<span class='no'>ukp_data_poly_3</span>)</div><div class='output co'>#&gt; # A tibble: 6 × 12
-#&gt;                category persistent_id    date      lat     long street_id
-#&gt;                   &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;chr&gt;
-#&gt; 1 anti-social-behaviour               2016-11 52.32107 0.442209   1141565
-#&gt; 2 anti-social-behaviour               2016-11 52.30487 0.494963   1141325
-#&gt; 3 anti-social-behaviour               2016-11 52.34834 0.466663   1142004
-#&gt; 4 anti-social-behaviour               2016-11 52.30525 0.490876   1141332
-#&gt; 5 anti-social-behaviour               2016-11 52.30889 0.499972   1141317
-#&gt; 6 anti-social-behaviour               2016-11 52.30487 0.494963   1141325
-#&gt; # ... with 6 more variables: street_name &lt;chr&gt;, context &lt;chr&gt;, id &lt;chr&gt;,
-#&gt; #   location_type &lt;chr&gt;, location_subtype &lt;chr&gt;, outcome_status &lt;chr&gt;</div><div class='input'>
+<span class='no'>ukp_data_poly_3</span> <span class='kw'>&lt;-</span> <span class='fu'>ukp_crime_poly</span>(<span class='no'>poly_df_3</span>)</div><div class='output co'>#&gt; <span class='message'>No encoding supplied: defaulting to UTF-8.</span></div><div class='input'><span class='fu'>head</span>(<span class='no'>ukp_data_poly_3</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 12
+#&gt;   category  persistent_id date    lat  long street_id street_name context id   
+#&gt;   &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;
+#&gt; 1 anti-soc… ""            2018…  52.3 0.496 1141362   On or near… ""      6349…
+#&gt; 2 anti-soc… ""            2018…  52.3 0.497 1141337   On or near… ""      6349…
+#&gt; 3 anti-soc… ""            2018…  52.3 0.476 1140354   On or near… ""      6351…
+#&gt; 4 anti-soc… ""            2018…  52.3 0.413 557698    On or near… ""      6351…
+#&gt; 5 anti-soc… ""            2018…  52.3 0.413 564411    On or near… ""      6351…
+#&gt; 6 anti-soc… ""            2018…  52.2 0.484 561970    On or near… ""      6352…
+#&gt; # ... with 3 more variables: location_type &lt;chr&gt;, location_subtype &lt;chr&gt;,
+#&gt; #   outcome_status &lt;chr&gt;</div><div class='input'>
 <span class='co'># with 4 points</span>
 <span class='no'>poly_df_4</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>lat</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>52.268</span>, <span class='fl'>52.794</span>, <span class='fl'>52.130</span>, <span class='fl'>52.000</span>),
                        <span class='kw'>long</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.543</span>,  <span class='fl'>0.238</span>,  <span class='fl'>0.478</span>,  <span class='fl'>0.400</span>))
 <span class='no'>ukp_data_poly_4</span> <span class='kw'>&lt;-</span> <span class='fu'>ukp_crime_poly</span>(<span class='kw'>poly_df</span> <span class='kw'>=</span> <span class='no'>poly_df_4</span>)</div><div class='output co'>#&gt; <span class='message'>No encoding supplied: defaulting to UTF-8.</span></div><div class='input'>
-<span class='fu'>head</span>(<span class='no'>ukp_data_poly_4</span>)</div><div class='output co'>#&gt; # A tibble: 6 × 12
-#&gt;                category persistent_id    date      lat     long street_id
-#&gt;                   &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;chr&gt;
-#&gt; 1 anti-social-behaviour               2016-11 52.30889 0.499972   1141317
-#&gt; 2 anti-social-behaviour               2016-11 52.08170 0.444165   1137072
-#&gt; 3 anti-social-behaviour               2016-11 52.37459 0.480496   1142487
-#&gt; 4 anti-social-behaviour               2016-11 52.30487 0.494963   1141325
-#&gt; 5 anti-social-behaviour               2016-11 52.34309 0.405690    564425
-#&gt; 6 anti-social-behaviour               2016-11 52.35456 0.420852   1142016
-#&gt; # ... with 6 more variables: street_name &lt;chr&gt;, context &lt;chr&gt;, id &lt;chr&gt;,
-#&gt; #   location_type &lt;chr&gt;, location_subtype &lt;chr&gt;, outcome_status &lt;chr&gt;</div><div class='input'>
+<span class='fu'>head</span>(<span class='no'>ukp_data_poly_4</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 12
+#&gt;   category  persistent_id date    lat  long street_id street_name context id   
+#&gt;   &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;
+#&gt; 1 anti-soc… ""            2018…  52.3 0.413 557698    On or near… ""      6351…
+#&gt; 2 anti-soc… ""            2018…  52.3 0.495 1141325   On or near… ""      6349…
+#&gt; 3 anti-soc… ""            2018…  52.3 0.496 1141362   On or near… ""      6349…
+#&gt; 4 anti-soc… ""            2018…  52.1 0.441 1135446   On or near… ""      6349…
+#&gt; 5 anti-soc… ""            2018…  52.7 0.275 998436    On or near… ""      6349…
+#&gt; 6 anti-soc… ""            2018…  52.1 0.443 1137028   On or near… ""      6349…
+#&gt; # ... with 3 more variables: location_type &lt;chr&gt;, location_subtype &lt;chr&gt;,
+#&gt; #   outcome_status &lt;chr&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -148,11 +176,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

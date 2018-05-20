@@ -6,31 +6,40 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • ukpolice</title>
+<title>Changelog • ukpolice</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
+
+
+<meta property="og:title" content="Changelog" />
+
+
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -44,21 +53,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">ukpolice</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">ukpolice</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../articles/getting-started-with-ukpolice.html">Getting Started</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -66,75 +80,110 @@
       
       </header>
 
-      <div class="row">
-
-  <div class="col-md-9">
+<div class="row">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+      <h1>Changelog <small></small></h1>
+      
     </div>
 
-    <div class="contents">
-    <div id="ukpolice-0-0-0-9200-2016-11-15" class="section level1">
-<h1 class="hasAnchor">
-<a href="#ukpolice-0-0-0-9200-2016-11-15" class="anchor"> </a>ukpolice 0.0.0.9200 (2016-11-15)</h1>
+    <div id="ukpolice-0-0-1-9000-2018-05-20" class="section level1">
+<h1 class="page-header">
+<a href="#ukpolice-0-0-1-9000-2018-05-20" class="anchor"></a>ukpolice 0.0.1.9000 (2018-05-20)</h1>
 <div id="minor-improvements" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-improvements" class="anchor"> </a>MINOR IMPROVEMENTS</h2>
-<ul><li>
-<code><a href="../reference/ukp_crime_poly.html">ukp_crime_poly()</a></code> now takes a data.frame of long/lat points instead of an long character vector. This is due to the utility function <code>ukp_poly_paste</code>.</li>
-<li>added <code>ukp_geo_chull</code> which takes a data.frame and some lon/lat names and provides the dataframe which contains the convex hull of points. This can then be fed into <code><a href="../reference/ukp_crime_poly.html">ukp_crime_poly()</a></code>.</li>
-</ul></div>
+<a href="#minor-improvements" class="anchor"></a>Minor Improvements</h2>
+<ul>
+<li>Minor clean ups from the past 18 months:
+<ul>
+<li>removed maxcovr as suggestions</li>
+<li>used markdown in roxygen</li>
+<li>tweak README and README figures</li>
+<li>Added a vignette</li>
+</ul>
+</li>
+</ul>
 </div>
-    <div id="ukpolice-0-0-0-9100-2016-11-14" class="section level1">
-<h1 class="hasAnchor">
-<a href="#ukpolice-0-0-0-9100-2016-11-14" class="anchor"> </a>ukpolice 0.0.0.9100 (2016-11-14)</h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"> </a>NEW FEATURES</h2>
-<ul><li>Add <code><a href="../reference/ukp_crime_poly.html">ukp_crime_poly()</a></code>, which is like <code><a href="../reference/ukp_crime.html">ukp_crime()</a></code>, but takes multiple pairs of long/lat to extract crime that falls within a polygon, instead of within a one mile radius of a particular point</li>
-<li>Added unexported function <code>ukp_crime_unlist</code> which flattens the crime data.</li>
-</ul></div>
+<a href="#new-features" class="anchor"></a>New Features</h2>
+<ul>
+<li>Added the “york” dataset, which contains information on listed buildings in the city of York, UK. This is used to demonstrate defining polygon around a region and finding crime within in.</li>
+</ul>
 </div>
-    <div id="ukpolice-0-0-0-9002-2016-11-05" class="section level1">
-<h1 class="hasAnchor">
-<a href="#ukpolice-0-0-0-9002-2016-11-05" class="anchor"> </a>ukpolice 0.0.0.9002 (2016-11-05)</h1>
-<div id="new-features-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"> </a>NEW FEATURES</h2>
-<ul><li>Created <code><a href="../reference/ukp_crime.html">ukp_crime()</a></code>, which accesses the crimes that occur within one mile of a given latitude and longitude, and from a specific month</li>
-<li>Created function <code><a href="../reference/ukp_last_update.html">ukp_last_update()</a></code>, to search for the last update in the crime data.</li>
-<li>Added pkgdown website for the package documentation</li>
-</ul></div>
 </div>
-    <div id="ukpolice-0-0-0-9001-2016-10-26" class="section level1">
-<h1 class="hasAnchor">
-<a href="#ukpolice-0-0-0-9001-2016-10-26" class="anchor"> </a>ukpolice 0.0.0.9001 (2016-10-26)</h1>
+    <div id="ukpolice-0-0-0-9200-2016-11-15" class="section level1">
+<h1 class="page-header">
+<a href="#ukpolice-0-0-0-9200-2016-11-15" class="anchor"></a>ukpolice 0.0.0.9200 (2016-11-15)</h1>
 <div id="minor-improvements-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-improvements-1" class="anchor"> </a>MINOR IMPROVEMENTS</h2>
-<ul><li>Changed all functions to have prefix <code>ukp_</code>, so <code>get_neighbourhoods</code> changed to <code><a href="../reference/ukp_neighbourhood.html">ukp_neighbourhood()</a></code>, and <code>ukpolice_api()</code> changed to <code><a href="../reference/ukp_api.html">ukp_api()</a></code>, as suggested by @sckott in <a href="https://github.com/njtierney/ukpolice/issues/6">issue #6</a>.</li>
-<li>Added function <code>ukp_neighbourhood_force()</code>, to find associated neighbourhood forcename and neighbourhood ID.</li>
-<li>Added <code>...</code> option in <code><a href="../reference/ukp_api.html">ukp_api()</a></code>, to facilitate debugging, as suggested by @sckott in <a href="https://github.com/njtierney/ukpolice/issues/7">issue #7</a>
-</li>
-</ul></div>
+<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h2>
+<ul>
+<li>
+<code><a href="../reference/ukp_crime_poly.html">ukp_crime_poly()</a></code> now takes a data.frame of long/lat points instead of an long character vector. This is due to the utility function <code>ukp_poly_paste</code>.</li>
+<li>added <code>ukp_geo_chull</code> which takes a data.frame and some lon/lat names and provides the dataframe which contains the convex hull of points. This can then be fed into <code><a href="../reference/ukp_crime_poly.html">ukp_crime_poly()</a></code>.</li>
+</ul>
 </div>
-    <div id="ukpolice-0-0-0-9000-2016-10-25" class="section level1">
-<h1 class="hasAnchor">
-<a href="#ukpolice-0-0-0-9000-2016-10-25" class="anchor"> </a>ukpolice 0.0.0.9000 (2016-10-25)</h1>
+</div>
+    <div id="ukpolice-0-0-0-9100-2016-11-14" class="section level1">
+<h1 class="page-header">
+<a href="#ukpolice-0-0-0-9100-2016-11-14" class="anchor"></a>ukpolice 0.0.0.9100 (2016-11-14)</h1>
+<div id="new-features-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h2>
+<ul>
+<li>Add <code><a href="../reference/ukp_crime_poly.html">ukp_crime_poly()</a></code>, which is like <code><a href="../reference/ukp_crime.html">ukp_crime()</a></code>, but takes multiple pairs of long/lat to extract crime that falls within a polygon, instead of within a one mile radius of a particular point</li>
+<li>Added unexported function <code>ukp_crime_unlist</code> which flattens the crime data.</li>
+</ul>
+</div>
+</div>
+    <div id="ukpolice-0-0-0-9002-2016-11-05" class="section level1">
+<h1 class="page-header">
+<a href="#ukpolice-0-0-0-9002-2016-11-05" class="anchor"></a>ukpolice 0.0.0.9002 (2016-11-05)</h1>
 <div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-2" class="anchor"> </a>NEW FEATURES</h2>
-<ul><li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-<li>Added the <code>get_neighbourhoods</code> function.</li>
-</ul><!--NEW FEATURES, MINOR IMPROVEMENTS, BUG FIXES, DEPRECATED AND DEFUNCT -- --></div>
+<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h2>
+<ul>
+<li>Created <code><a href="../reference/ukp_crime.html">ukp_crime()</a></code>, which accesses the crimes that occur within one mile of a given latitude and longitude, and from a specific month</li>
+<li>Created function <code><a href="../reference/ukp_last_update.html">ukp_last_update()</a></code>, to search for the last update in the crime data.</li>
+<li>Added pkgdown website for the package documentation</li>
+</ul>
 </div>
-    </div>
+</div>
+    <div id="ukpolice-0-0-0-9001-2016-10-26" class="section level1">
+<h1 class="page-header">
+<a href="#ukpolice-0-0-0-9001-2016-10-26" class="anchor"></a>ukpolice 0.0.0.9001 (2016-10-26)</h1>
+<div id="minor-improvements-2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-improvements-2" class="anchor"></a>MINOR IMPROVEMENTS</h2>
+<ul>
+<li>Changed all functions to have prefix <code>ukp_</code>, so <code>get_neighbourhoods</code> changed to <code><a href="../reference/ukp_neighbourhood.html">ukp_neighbourhood()</a></code>, and <code>ukpolice_api()</code> changed to <code><a href="../reference/ukp_api.html">ukp_api()</a></code>, as suggested by <a href='http://github.com/sckott'>@sckott</a> in <a href="https://github.com/njtierney/ukpolice/issues/6">issue #6</a>.</li>
+<li>Added function <code>ukp_neighbourhood_force()</code>, to find associated neighbourhood forcename and neighbourhood ID.</li>
+<li>Added <code>...</code> option in <code><a href="../reference/ukp_api.html">ukp_api()</a></code>, to facilitate debugging, as suggested by <a href='http://github.com/sckott'>@sckott</a> in <a href="https://github.com/njtierney/ukpolice/issues/7">issue #7</a>
+</li>
+</ul>
+</div>
+</div>
+    <div id="ukpolice-0-0-0-9000-2016-10-25" class="section level1">
+<h1 class="page-header">
+<a href="#ukpolice-0-0-0-9000-2016-10-25" class="anchor"></a>ukpolice 0.0.0.9000 (2016-10-25)</h1>
+<div id="new-features-3" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features-3" class="anchor"></a>NEW FEATURES</h2>
+<ul>
+<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
+<li>Added the <code>get_neighbourhoods</code> function.</li>
+</ul>
+<p>&lt;!–NEW FEATURES, MINOR IMPROVEMENTS, BUG FIXES, DEPRECATED AND DEFUNCT – &gt;</p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#ukpolice-0-0-1-9000-2018-05-20">0.0.1.9000</a></li>
         <li><a href="#ukpolice-0-0-0-9200-2016-11-15">0.0.0.9200</a></li>
         <li><a href="#ukpolice-0-0-0-9100-2016-11-14">0.0.0.9100</a></li>
         <li><a href="#ukpolice-0-0-0-9002-2016-11-05">0.0.0.9002</a></li>
@@ -152,11 +201,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
