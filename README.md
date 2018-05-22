@@ -8,16 +8,13 @@ Status](https://ci.appveyor.com/api/projects/status/github/njtierney/ukpolice?br
 Build
 Status](https://travis-ci.org/njtierney/ukpolice.svg?branch=master)](https://travis-ci.org/njtierney/ukpolice)[![Coverage
 Status](https://img.shields.io/codecov/c/github/njtierney/ukpolice/master.svg)](https://codecov.io/github/njtierney/ukpolice?branch=master)
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 ukpolice is an R package that facilitates retrieving data from the [UK
 police database.](https://data.police.uk/). The data provided by the API
 contains public sector information licensed under the [Open Government
 Licence
 v3.0.](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
-
-*hex sticker police logo “Police” created by Yu luck from the Noun
-Project, hex sticker made with
-[hexSticker](https://github.com/GuangchuangYu/hexSticker) package*
 
 # Installation
 
@@ -158,3 +155,9 @@ ukpolice”.
 Please note that this project is released with a [Contributor Code of
 Conduct](CONDUCT.md). By participating in this project you agree to
 abide by its terms.
+
+## Thanks
+
+*hex sticker police logo “Police” created by Yu luck from the Noun
+Project, hex sticker made with
+[hexSticker](https://github.com/GuangchuangYu/hexSticker) package*
