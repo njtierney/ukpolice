@@ -7,17 +7,29 @@
 ukp_crime_poly(poly_df, date = NULL, ...)
 }
 \arguments{
-\item{poly_df}{dataframe containing the lat/lng pairs which define the boundary of the custom area. If a custom area contains more than 10,000 crimes, the API will return a 503 status code. ukp_crime_poly converts the dataframe into lat/lng pairs, separated by colons: \code{lat},\code{lng}:\code{lat},\code{lng}:\code{lat},\code{lng}. The first and last coordinates need not be the same — they will be joined by a straight line once the request is made.}
+\item{poly_df}{dataframe containing the lat/lng pairs which define the
+boundary of the custom area. If a custom area contains more than 10,000
+crimes, the API will return a 503 status code. ukp_crime_poly converts the
+dataframe into lat/lng pairs, separated by colons:
+\code{lat},\code{lng}:\code{lat},\code{lng}:\code{lat},\code{lng}. The first and last coordinates need
+not be the same — they will be joined by a straight line once the request
+is made.}
 
-\item{date, }{Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"}
+\item{date, }{Optional. (YYY-MM), limit results to a specific month. The
+latest month will be shown by default. e.g. date = "2013-01"}
 
-\item{...}{further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation \url{https://cran.r-project.org/web/packages/httr/} and \url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}.}
+\item{...}{further arguments passed to or from other methods. For example,
+verbose option can be added with ukp_api("call", config = httr::verbose()).
+See more in ?httr::GET documentation
+\url{https://cran.r-project.org/web/packages/httr/} and
+\url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}.}
 }
 \description{
 Extract crime areas within a polygon
 }
 \note{
-further documentation here: \url{https://data.police.uk/docs/method/crime-street/}
+further documentation here:
+\url{https://data.police.uk/docs/method/crime-street/}
 }
 \examples{
 

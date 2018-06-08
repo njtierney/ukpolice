@@ -40,7 +40,7 @@ test_that("ukp_crime returns lat and long that are numeric", {
 })
 
 # with 3 points
-poly_df_3 = data.frame(lat = c(52.268, 52.794, 52.130),
+poly_df_3 <- data.frame(lat = c(52.268, 52.794, 52.130),
                        long = c(0.543, 0.238, 0.478))
 
 ukp_data_poly_3 <- ukp_crime_poly(poly_df_3)
@@ -58,7 +58,7 @@ test_that("ukp_crime_poly returns lat and long that are numeric", {
 })
 
 # with 4 points
-poly_df_4 = data.frame(lat = c(52.268, 52.794, 52.130, 52.000),
+poly_df_4 <- data.frame(lat = c(52.268, 52.794, 52.130, 52.000),
                        long = c(0.543,  0.238,  0.478,  0.400))
 
 ukp_data_poly_4 <- ukp_crime_poly(poly_df = poly_df_4)

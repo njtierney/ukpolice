@@ -3,7 +3,11 @@
 \docType{data}
 \name{york}
 \alias{york}
-\title{Listed buildings provided by the City of York Council, made available \href{https://data.gov.uk/dataset/9417652f-3901-4a16-8368-222deefb36cd/listed-buildings}{here}. This data contains public sector information licensed under the Open Government Licence v3.0: \url{https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/}.}
+\title{Listed buildings provided by the City of York Council, made available
+\href{https://data.gov.uk/dataset/9417652f-3901-4a16-8368-222deefb36cd/listed-buildings}{here}.
+This data contains public sector information licensed under the Open
+Government Licence v3.0:
+\url{https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/}.}
 \format{A data frame with seven variables: \code{long}, \code{lat}, \code{desig_id},
 \code{bldg_name}, \code{grade}, \code{status_date}, and \code{esri_oid}.
 
@@ -22,6 +26,10 @@ For further details, see \url{https://www.york.gov.uk/info/20215/conservation_an
 york
 }
 \description{
-Listed buildings provided by the City of York Council, made available \href{https://data.gov.uk/dataset/9417652f-3901-4a16-8368-222deefb36cd/listed-buildings}{here}. This data contains public sector information licensed under the Open Government Licence v3.0: \url{https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/}.
+Listed buildings provided by the City of York Council, made available
+\href{https://data.gov.uk/dataset/9417652f-3901-4a16-8368-222deefb36cd/listed-buildings}{here}.
+This data contains public sector information licensed under the Open
+Government Licence v3.0:
+\url{https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/}.
 }
 \keyword{datasets}

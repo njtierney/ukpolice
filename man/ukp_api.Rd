@@ -9,7 +9,11 @@ ukp_api(path, ...)
 \arguments{
 \item{path}{character}
 
-\item{...}{further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (https://cran.r-project.org/web/packages/httr/) and (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).}
+\item{...}{further arguments passed to or from other methods. For
+example, verbose option can be added with
+\code{ukp_api("call", config = httr::verbose())}. See more in \code{?httr::GET}
+documentation (https://cran.r-project.org/web/packages/httr/) and
+(https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).}
 }
 \value{
 a ukpolice_api object
@@ -18,9 +22,20 @@ a ukpolice_api object
 \code{ukp_api} is the basic building block for making requests out to the uk police database.
 }
 \note{
-Regaring authentication, the Police API no longer requires authentication. If a request succeeds, the API will return a 200 status code. If a request fails, the API will return a non-200 status code.
+Regaring authentication, the Police API no longer requires
+authentication. If a request succeeds, the API will return a 200 status
+code. If a request fails, the API will return a non-200 status code.
 
-Regarding API call limits, the Police API call limit operates using a 'leaky bucket' algorithm as a controller. This allows for infrequent bursts of calls, and allows you to continue to make an unlimited amount of calls over time. The current rate limit is 15 requests per second with a burst of 30. So, on average you must make fewer than 15 requests each second, but you can make up to 30 in a single second. You can learn more about the leaky bucket algorithm, https://en.wikipedia.org/wiki/Leaky_bucket.
+Regarding API call limits, the Police API call limit operates using
+a 'leaky bucket' algorithm as a controller. This allows for infrequent
+bursts of calls, and allows you to continue to make an unlimited amount
+of calls over time. The current rate limit is 15 requests per second
+with a burst of 30. So, on average you must make fewer than 15 requests
+each second, but you can make up to 30 in a single second. You can learn
+more about the leaky bucket algorithm,
+https://en.wikipedia.org/wiki/Leaky_bucket.
 
-Regarding HTTP headers and response codes, If you exceed the limit stated above, the API will return a HTTP 429 (Too Many Requests) response code.
+Regarding HTTP headers and response codes, If you exceed the limit
+stated above, the API will return a HTTP 429 (Too Many Requests)
+response code.
 }

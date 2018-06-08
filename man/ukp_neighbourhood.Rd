@@ -9,13 +9,20 @@ ukp_neighbourhood(neighbourhood, ...)
 \arguments{
 \item{neighbourhood}{a text string of a neighbourhood in the UK}
 
-\item{...}{further arguments passed to or from other methods. For example, verbose option can be added with ukp_api("call", config = httr::verbose()). See more in ?httr::GET documentation (\url{https://cran.r-project.org/web/packages/httr/}) and (\url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}).}
+\item{...}{further arguments passed to or from other methods. For example,
+verbose option can be added with ukp_api("call", config = httr::verbose()).
+See more in ?httr::GET documentation
+(\url{https://cran.r-project.org/web/packages/httr/}) and
+(\url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}).}
 }
 \value{
-tibble with columns id and name. id is a Police force specific team identifier, note that this identifier is not unique and may also be used by a different force. Name is the name for the neighbourhood
+tibble with columns id and name. id is a Police force specific team
+identifier, note that this identifier is not unique and may also be used by
+a different force. Name is the name for the neighbourhood
 }
 \description{
-\code{ukp_neighbourhood} retuns the list of neighbourhoods for a force, \url{https://data.police.uk/docs/method/neighbourhoods/}
+\code{ukp_neighbourhood} retuns the list of neighbourhoods for a force,
+\url{https://data.police.uk/docs/method/neighbourhoods/}
 }
 \examples{
 

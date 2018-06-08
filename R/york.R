@@ -1,6 +1,10 @@
 # York Listed Buildings.
 #'
-#' Listed buildings provided by the City of York Council, made available [here](https://data.gov.uk/dataset/9417652f-3901-4a16-8368-222deefb36cd/listed-buildings). This data contains public sector information licensed under the Open Government Licence v3.0: <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/>.
+#' Listed buildings provided by the City of York Council, made available
+#'   [here](https://data.gov.uk/dataset/9417652f-3901-4a16-8368-222deefb36cd/listed-buildings).
+#'   This data contains public sector information licensed under the Open
+#'   Government Licence v3.0:
+#'   <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/>.
 #'
 #' @format A data frame with seven variables: `long`, `lat`, `desig_id`,
 #'  `bldg_name`, `grade`, `status_date`, and `esri_oid`.
