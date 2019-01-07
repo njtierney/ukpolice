@@ -76,7 +76,7 @@ crime_data %>%
   geom_col() + 
   labs(x = "Crime Type",
        y = "Number of Crimes",
-       title = paste0("Crimes commited in ",crime_data_date$date[1])) +
+       title = paste0("Crimes commited in ",crime_data$date[1])) +
   coord_flip() +
   theme_minimal()
 ```

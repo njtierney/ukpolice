@@ -40,20 +40,20 @@ crime_data <- ukp_crime(lat = 52.629729, lng = -1.131592)
 
 head(crime_data)
 #> # A tibble: 6 x 12
-#>   category  persistent_id date    lat  long street_id street_name  context
-#>   <chr>     <chr>         <chr> <dbl> <dbl> <chr>     <chr>        <chr>  
-#> 1 anti-soc… ""            2018…  52.6 -1.13 882346    On or near … ""     
-#> 2 anti-soc… ""            2018…  52.6 -1.13 883351    On or near … ""     
-#> 3 anti-soc… ""            2018…  52.6 -1.13 883408    On or near … ""     
-#> 4 anti-soc… ""            2018…  52.6 -1.13 883313    On or near … ""     
-#> 5 anti-soc… ""            2018…  52.6 -1.11 882420    On or near … ""     
-#> 6 anti-soc… ""            2018…  52.6 -1.13 882336    On or near … ""     
-#> # ... with 4 more variables: id <chr>, location_type <chr>,
+#>   category persistent_id date    lat  long street_id street_name context
+#>   <chr>    <chr>         <chr> <dbl> <dbl> <chr>     <chr>       <chr>  
+#> 1 anti-so… ""            2018…  52.6 -1.13 883389    On or near… ""     
+#> 2 anti-so… ""            2018…  52.6 -1.13 883356    On or near… ""     
+#> 3 anti-so… ""            2018…  52.6 -1.14 883430    On or near… ""     
+#> 4 anti-so… ""            2018…  52.6 -1.13 883378    On or near… ""     
+#> 5 anti-so… ""            2018…  52.6 -1.12 883201    On or near… ""     
+#> 6 anti-so… ""            2018…  52.6 -1.14 883426    On or near… ""     
+#> # … with 4 more variables: id <chr>, location_type <chr>,
 #> #   location_subtype <chr>, outcome_status <chr>
 
 ukp_last_update()
 #> No encoding supplied: defaulting to UTF-8.
-#> [1] "2018-03"
+#> [1] "2018-11"
 ```
 
 ## Specify a month and year for data
@@ -70,15 +70,15 @@ crime_data_date <- ukp_crime(lat = 52.629729,
 
 head(crime_data_date)
 #> # A tibble: 6 x 12
-#>   category  persistent_id date    lat  long street_id street_name  context
-#>   <chr>     <chr>         <chr> <dbl> <dbl> <chr>     <chr>        <chr>  
-#> 1 anti-soc… ""            2016…  52.6 -1.14 882313    On or near … ""     
-#> 2 anti-soc… ""            2016…  52.6 -1.12 883287    On or near … ""     
-#> 3 anti-soc… ""            2016…  52.6 -1.15 883538    On or near … ""     
-#> 4 anti-soc… ""            2016…  52.6 -1.13 883415    On or near … ""     
-#> 5 anti-soc… ""            2016…  52.6 -1.14 883525    On or near … ""     
-#> 6 anti-soc… ""            2016…  52.6 -1.14 883433    On or near … ""     
-#> # ... with 4 more variables: id <chr>, location_type <chr>,
+#>   category persistent_id date    lat  long street_id street_name context
+#>   <chr>    <chr>         <chr> <dbl> <dbl> <chr>     <chr>       <chr>  
+#> 1 anti-so… ""            2016…  52.6 -1.13 883288    On or near… ""     
+#> 2 anti-so… ""            2016…  52.6 -1.13 883321    On or near… ""     
+#> 3 anti-so… ""            2016…  52.6 -1.13 883362    On or near… ""     
+#> 4 anti-so… ""            2016…  52.6 -1.13 883388    On or near… ""     
+#> 5 anti-so… ""            2016…  52.6 -1.13 883359    On or near… ""     
+#> 6 anti-so… ""            2016…  52.6 -1.11 883060    On or near… ""     
+#> # … with 4 more variables: id <chr>, location_type <chr>,
 #> #   location_subtype <chr>, outcome_status <chr>
 ```
 
@@ -114,7 +114,7 @@ crime_data %>%
   geom_col() + 
   labs(x = "Crime Type",
        y = "Number of Crimes",
-       title = paste0("Crimes commited in ",crime_data_date$date[1])) +
+       title = paste0("Crimes commited in ",crime_data$date[1])) +
   coord_flip() +
   theme_minimal()
 ```
