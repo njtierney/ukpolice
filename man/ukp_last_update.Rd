@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{ukp_last_update}
 \alias{ukp_last_update}
-\title{Find the date of the latest update from the UK Police databse}
+\title{Find the date of the latest update from the UK Police database}
 \usage{
 ukp_last_update(...)
 }

@@ -2,7 +2,7 @@
 #'
 #' Return the list of neighbourhoods for a force.
 #'
-#' `ukp_neighbourhood` retuns the list of neighbourhoods for a force,
+#' `ukp_neighbourhood` returns the list of neighbourhoods for a force,
 #'   <https://data.police.uk/docs/method/neighbourhoods/>
 #'
 #' @param neighbourhood a text string of a neighbourhood in the UK
@@ -28,7 +28,7 @@ ukp_neighbourhood <- function(neighbourhood, ...){
   dplyr::bind_rows(result$content)
 
 }
-#' Find the assoiate neighbourhood code with a long/lat string
+#' Find the associated neighbourhood code with a long/lat string
 #'
 #' `ukp_neighbourhood_location` takes a longitude/latitude string and finds the
 #'   associated neighbourhood code associated with that. Read more here

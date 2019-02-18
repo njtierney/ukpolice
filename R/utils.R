@@ -12,7 +12,7 @@
 #'
 #' @return a `ukpolice_api`` object
 #'
-#' @note Regaring authentication, the Police API no longer requires
+#' @note Regarding authentication, the Police API no longer requires
 #'     authentication. If a request succeeds, the API will return a 200 status
 #'     code. If a request fails, the API will return a non-200 status code.
 #'
@@ -89,7 +89,7 @@ print.ukp_api <- function(x, ...) {
   invisible(x)
 }
 
-#' Find the date of the latest update from the UK Police databse
+#' Find the date of the latest update from the UK Police database
 #'
 #' Crime data in the API is updated once a month. Find out when it was last
 #'   updated using `ukp_last_update`.

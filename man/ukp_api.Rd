@@ -23,7 +23,7 @@ a `ukpolice_api`` object
 police database.
 }
 \note{
-Regaring authentication, the Police API no longer requires
+Regarding authentication, the Police API no longer requires
 authentication. If a request succeeds, the API will return a 200 status
 code. If a request fails, the API will return a non-200 status code.
 

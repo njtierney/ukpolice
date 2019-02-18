@@ -22,7 +22,7 @@ identifier, note that this identifier is not unique and may also be used by
 a different force. Name is the name for the neighbourhood
 }
 \description{
-\code{ukp_neighbourhood} retuns the list of neighbourhoods for a force,
+\code{ukp_neighbourhood} returns the list of neighbourhoods for a force,
 \url{https://data.police.uk/docs/method/neighbourhoods/}
 }
 \examples{

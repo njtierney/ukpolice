@@ -14,7 +14,7 @@
 #' \item{`lat`}{latitude of the building}
 #' \item{`desig_id`}{ID related to a feature that is not yet known to me}
 #' \item{`bldg_name`}{name of the building}
-#' \item{`grade`}{one of the three (I, II, III) cateogories of listed buildings}
+#' \item{`grade`}{one of the three (I, II, III) categories of listed buildings}
 #' \item{`status_date`}{date the status was made}
 #' \item{`esri_oid`}{ID related to a feature that is not yet known to me}
 #' }

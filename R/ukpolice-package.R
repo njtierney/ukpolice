@@ -1,6 +1,6 @@
 #' ukpolice
 #'
-#' A package to retriece data from the UK police data repository: ukpolice is
+#' A package to retrieve data from the UK police data repository: ukpolice is
 #'     an R package that facilitates retrieving data from the
 #'     [UK police database.](https://data.police.uk/). The data provided by
 #'     the API contains public sector information licensed under the

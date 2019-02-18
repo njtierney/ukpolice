@@ -16,7 +16,7 @@ Government Licence v3.0:
 \item{\code{lat}}{latitude of the building}
 \item{\code{desig_id}}{ID related to a feature that is not yet known to me}
 \item{\code{bldg_name}}{name of the building}
-\item{\code{grade}}{one of the three (I, II, III) cateogories of listed buildings}
+\item{\code{grade}}{one of the three (I, II, III) categories of listed buildings}
 \item{\code{status_date}}{date the status was made}
 \item{\code{esri_oid}}{ID related to a feature that is not yet known to me}
 }
