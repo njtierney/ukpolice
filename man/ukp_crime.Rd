@@ -14,7 +14,9 @@ ukp_crime(lat, lng, date = NULL, ...)
 \item{date, }{Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"}
 
 \item{...}{further arguments passed to or from other methods. For example,
-verbose option can be added with \code{ukp_api("call", config = httr::verbose())}. See more in ?httr::GET documentation
+verbose option can be added with
+\code{ukp_api("call", config = httr::verbose())}. See more in \code{?httr::GET}
+documentation
 (\url{https://cran.r-project.org/web/packages/httr/}) and
 (\url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}).}
 }

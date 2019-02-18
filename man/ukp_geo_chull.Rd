@@ -17,10 +17,10 @@ ukp_geo_chull(data, long, lat)
 a dataframe with the positions for the polygon.
 }
 \description{
-\code{ukp_geo_chull} computes the convex hull of some lon/lat points, returning a dataframe of the polygon position
+\code{ukp_geo_chull} computes the convex hull of some lon/lat points, returning
+a dataframe of the polygon position.
 }
 \examples{
-
 ukp_geo_chull(york,
               "long",
               "lat")

@@ -13,5 +13,6 @@ ukp_crime_unlist(result_content)
 data.frame
 }
 \description{
-\code{ukp_crime_unlist} is a utility function to clean and unlist the data extracted from the crime data.
+\code{ukp_crime_unlist} is a utility function to clean and unlist the data
+extracted from the crime data.
 }

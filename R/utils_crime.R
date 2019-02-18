@@ -2,7 +2,8 @@
 
 #' Unlist and clean crime data
 #'
-#' `ukp_crime_unlist` is a utility function to clean and unlist the data extracted from the crime data.
+#' `ukp_crime_unlist` is a utility function to clean and unlist the data
+#'   extracted from the crime data.
 #'
 #' @param result_content a result from the ukp_api
 #'
@@ -12,9 +13,11 @@ ukp_crime_unlist <- function(result_content){
 
   result_unlist <- unlist(result_content)
 
-  result_df <- as.data.frame(result_unlist, stringsAsFactors = FALSE)
+  result_df <- as.data.frame(result_unlist,
+                             stringsAsFactors = FALSE)
 
-  result_df <- dplyr::mutate(result_df, variables = rownames(result_df))
+  result_df <- dplyr::mutate(result_df,
+                             variables = rownames(result_df))
 
   result_df <- dplyr::select(result_df,
                              variables,
@@ -32,7 +35,8 @@ ukp_crime_unlist <- function(result_content){
 
 #' Format long/lat numbers into the right string
 #'
-#' `ukp_poly_paste` takes a dataframe of longitude and latitude and pastes them into the correct format required for the ukpolice API
+#' `ukp_poly_paste` takes a dataframe of longitude and latitude and pastes
+#'   them into the correct format required for the ukpolice API
 #'
 #' @param data a dataframe
 #' @param long character
@@ -62,7 +66,8 @@ ukp_poly_paste <- function(data,
 #' Compute convex hull of long/lat points
 #'
 #'
-#' `ukp_geo_chull` computes the convex hull of some lon/lat points, returning a dataframe of the polygon position
+#' `ukp_geo_chull` computes the convex hull of some lon/lat points, returning
+#'   a dataframe of the polygon position.
 #'
 #' @param data a dataframe
 #' @param long longitude, a character naming the long name
@@ -70,9 +75,7 @@ ukp_poly_paste <- function(data,
 #'
 #' @return a dataframe with the positions for the polygon.
 #'
-#'
 #' @examples
-#'
 #' ukp_geo_chull(york,
 #'               "long",
 #'               "lat")
@@ -83,7 +86,7 @@ ukp_geo_chull <- function(data,
 
   if (is.data.frame(data) == FALSE){
     stop("Input must be a data.frame", call. = FALSE)
-  } else if ( (is.character(long) | is.character(lat)) == FALSE){
+  } else if ( (is.character(long) | is.character(lat)) == FALSE) {
     stop("Long or Lat must be characters")
   }
 
@@ -91,7 +94,8 @@ ukp_geo_chull <- function(data,
   # lat_name <- deparse(substitute(lat))
 
   # data_chull <- data[grDevices::chull(data[[long_name]], data[[lat_name]]), ]
-  data_chull <- data[grDevices::chull(data[[long]], data[[lat]]), ]
+  chull_long_lat <- grDevices::chull(data[[long]], data[[lat]])
+  data_chull <- data[chull_long_lat, ]
 
   # unsure if I really need to subset the data...
   # data_chull <- dplyr::select_(data_chull,

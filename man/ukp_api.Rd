@@ -16,10 +16,11 @@ documentation (https://cran.r-project.org/web/packages/httr/) and
 (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).}
 }
 \value{
-a ukpolice_api object
+a `ukpolice_api`` object
 }
 \description{
-\code{ukp_api} is the basic building block for making requests out to the uk police database.
+\code{ukp_api} is the basic building block for making requests out to the uk
+police database.
 }
 \note{
 Regaring authentication, the Police API no longer requires

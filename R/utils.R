@@ -1,6 +1,7 @@
 #' ukpolice API call
 #'
-#' `ukp_api` is the basic building block for making requests out to the uk police database.
+#' `ukp_api` is the basic building block for making requests out to the uk
+#'   police database.
 #'
 #' @param path character
 #' @param ... further arguments passed to or from other methods. For
@@ -9,7 +10,7 @@
 #'     documentation (https://cran.r-project.org/web/packages/httr/) and
 #'     (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).
 #'
-#' @return a ukpolice_api object
+#' @return a `ukpolice_api`` object
 #'
 #' @note Regaring authentication, the Police API no longer requires
 #'     authentication. If a request succeeds, the API will return a 200 status
@@ -90,11 +91,13 @@ print.ukp_api <- function(x, ...) {
 
 #' Find the date of the latest update from the UK Police databse
 #'
-#' Crime data in the API is updated once a month. Find out when it was last updated using `ukp_last_update`.
+#' Crime data in the API is updated once a month. Find out when it was last
+#'   updated using `ukp_last_update`.
 #'
 #' @param ... further arguments passed to or from other methods. For example,
-#'   verbose option can be added with ukp_api("call", config = httr::verbose()).
-#'   See more in ?httr::GET documentation
+#'   verbose option can be added with
+#'   `ukp_api("call", config = httr::verbose())`.
+#'   See more in `?httr::GET` documentation
 #'   (https://cran.r-project.org/web/packages/httr/) and
 #'   (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html).
 #' @return date	Month of latest crime data in ISO format. The day is irrelevant

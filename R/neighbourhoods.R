@@ -7,8 +7,9 @@
 #'
 #' @param neighbourhood a text string of a neighbourhood in the UK
 #' @param ... further arguments passed to or from other methods. For example,
-#'   verbose option can be added with ukp_api("call", config = httr::verbose()).
-#'   See more in ?httr::GET documentation
+#'   verbose option can be added with
+#'   `ukp_api("call", config = httr::verbose())`. See more in `?httr::GET`
+#'   documentation
 #'   (<https://cran.r-project.org/web/packages/httr/>) and
 #'   (<https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html>).
 
@@ -18,14 +19,11 @@
 #' @export
 #'
 #' @examples
-#'
 #' library(ukpolice)
 #' ukp_neighbourhood("leicestershire")
-#'
-#'
 ukp_neighbourhood <- function(neighbourhood, ...){
 
-  result <- ukp_api(sprintf("api/%s/neighbourhoods",neighbourhood))
+  result <- ukp_api(glue::glue("api/{neighbourhood}/neighbourhoods"))
 
   dplyr::bind_rows(result$content)
 
@@ -38,8 +36,9 @@ ukp_neighbourhood <- function(neighbourhood, ...){
 #'
 #' @param lat_long a character string of latitude and longitude
 #' @param ... further arguments passed to or from other methods. For example,
-#'   verbose option can be added with ukp_api("call", config = httr::verbose()).
-#'   See more in ?httr::GET documentation
+#'   verbose option can be added with
+#'   `ukp_api("call", config = httr::verbose()).` See more in `?httr::GET`
+#'   documentation
 #'   (<https://cran.r-project.org/web/packages/httr/>) and
 #'   (<https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html>).
 #' @return a tibble

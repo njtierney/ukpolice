@@ -10,8 +10,9 @@ ukp_neighbourhood(neighbourhood, ...)
 \item{neighbourhood}{a text string of a neighbourhood in the UK}
 
 \item{...}{further arguments passed to or from other methods. For example,
-verbose option can be added with ukp_api("call", config = httr::verbose()).
-See more in ?httr::GET documentation
+verbose option can be added with
+\code{ukp_api("call", config = httr::verbose())}. See more in \code{?httr::GET}
+documentation
 (\url{https://cran.r-project.org/web/packages/httr/}) and
 (\url{https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html}).}
 }
@@ -25,9 +26,6 @@ a different force. Name is the name for the neighbourhood
 \url{https://data.police.uk/docs/method/neighbourhoods/}
 }
 \examples{
-
 library(ukpolice)
 ukp_neighbourhood("leicestershire")
-
-
 }

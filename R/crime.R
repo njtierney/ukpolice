@@ -13,8 +13,9 @@
 #' @param lng, longitude of the requested crime area
 #' @param date, Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"
 #' @param ... further arguments passed to or from other methods. For example,
-#'   verbose option can be added with `ukp_api("call", config =
-#'   httr::verbose())`. See more in ?httr::GET documentation
+#'   verbose option can be added with
+#'   `ukp_api("call", config = httr::verbose())`. See more in `?httr::GET`
+#'  documentation
 #'   (<https://cran.r-project.org/web/packages/httr/>) and
 #'   (<https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html>).
 #'
@@ -67,35 +68,32 @@ ukp_crime <- function(lat,
   if (is.null(date) == FALSE) {
 
     result <- ukp_api(
-      sprintf("api/crimes-street/all-crime?lat=%s&lng=%s&date=%s",
-              lat,
-              lng,
-              date)
-    )
+      glue::glue("api/crimes-street/all-crime?lat={lat}&lng={lng}&date={date}")
+              )
 
   # else if no date is specified
   } else if (is.null(date) == TRUE) {
 
     result <- ukp_api(
-      sprintf("api/crimes-street/all-crime?lat=%s&lng=%s",
-              lat,
-              lng)
+      glue::glue("api/crimes-street/all-crime?lat={lat}&lng={lng}")
     )
 
   }
 
-  extract_result <- purrr::map_df(.x = result$content,
+  extract_result <- purrr::map_dfr(.x = result$content,
                                   .f = ukp_crime_unlist)
 
   # rename the data
-  extract_result <- dplyr::rename(extract_result,
-                lat = location.latitude,
-                long = location.longitude,
-                street_id = location.street.id,
-                street_name = location.street.name,
-                date = month,
-                outcome_status = outcome_status.category,
-                outcome_date = outcome_status.date)
+  extract_result <- dplyr::rename(
+    extract_result,
+    lat = location.latitude,
+    long = location.longitude,
+    street_id = location.street.id,
+    street_name = location.street.name,
+    date = month,
+    outcome_status = outcome_status.category,
+    outcome_date = outcome_status.date
+  )
 
 
   final_result <- dplyr::mutate(extract_result,
@@ -133,8 +131,9 @@ ukp_crime <- function(lat,
 #' @param date, Optional. (YYY-MM), limit results to a specific month. The
 #'   latest month will be shown by default. e.g. date = "2013-01"
 #' @param ... further arguments passed to or from other methods. For example,
-#'   verbose option can be added with ukp_api("call", config = httr::verbose()).
-#'   See more in ?httr::GET documentation
+#'   verbose option can be added with
+#'   `ukp_api("call", config = httr::verbose())`.
+#'   See more in `?httr::GET` documentation
 #'   <https://cran.r-project.org/web/packages/httr/> and
 #'   <https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html>.
 #' @note further documentation here:
@@ -179,10 +178,8 @@ ukp_crime_poly <- function(poly_df,
   if (is.null(date) == FALSE) {
 
     result <- ukp_api(
-      sprintf("api/crimes-street/all-crime?poly=%s&date=%s",
-              poly_string,
-              date)
-    )
+      glue::glue("api/crimes-street/all-crime?poly={poly_string}&date={date}")
+      )
 
     # else if no date is specified
   } else if (is.null(date) == TRUE) {
@@ -191,24 +188,25 @@ ukp_crime_poly <- function(poly_df,
     # last_date <- ukpolice::ukp_last_update()
 
     result <- ukp_api(
-      sprintf("api/crimes-street/all-crime?poly=%s",
-              poly_string)
+      glue::glue("api/crimes-street/all-crime?poly={poly_string}")
       )
 
   } # end ifelse
 
-  extract_result <- purrr::map_df(.x = result$content,
-                                  .f = ukp_crime_unlist)
+  extract_result <- purrr::map_dfr(.x = result$content,
+                                   .f = ukp_crime_unlist)
 
   # rename the data
-  extract_result <- dplyr::rename(extract_result,
-                                  lat = location.latitude,
-                                  long = location.longitude,
-                                  street_id = location.street.id,
-                                  street_name = location.street.name,
-                                  date = month,
-                                  outcome_status = outcome_status.category,
-                                  outcome_date = outcome_status.date)
+  extract_result <- dplyr::rename(
+    extract_result,
+    lat = location.latitude,
+    long = location.longitude,
+    street_id = location.street.id,
+    street_name = location.street.name,
+    date = month,
+    outcome_status = outcome_status.category,
+    outcome_date = outcome_status.date
+  )
 
   # ensure that lat and long are numeric
   final_result <- dplyr::mutate(extract_result,

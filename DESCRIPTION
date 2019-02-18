@@ -18,13 +18,17 @@ Imports:
     dplyr,
     tidyr,
     tibble,
-    purrr
-RoxygenNote: 6.0.1
-Suggests: covr,
+    purrr,
+    glue
+RoxygenNote: 6.1.1
+Suggests: 
+    covr,
     testthat,
     knitr,
     rmarkdown,
     ggplot2,
-    leaflet
+    leaflet,
+    spelling
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
+Language: en-US

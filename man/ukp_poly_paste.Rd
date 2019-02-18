@@ -17,7 +17,8 @@ ukp_poly_paste(data, long, lat)
 character vector: "lat_1,long_1:lat_2,long_2:...,lat_n,long_n"
 }
 \description{
-\code{ukp_poly_paste} takes a dataframe of longitude and latitude and pastes them into the correct format required for the ukpolice API
+\code{ukp_poly_paste} takes a dataframe of longitude and latitude and pastes
+them into the correct format required for the ukpolice API
 }
 \examples{
 
