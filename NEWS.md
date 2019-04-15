@@ -1,3 +1,9 @@
+# ukpolice 0.0.1.9100 (2019-04-15)
+
+## Minor Improvements
+
+* Added `lat_` and `lng_` example data so people can explore crime in a few places like "London", "Cambridge University", "Oxford University", "Abby Road Recording Studio", and "Liverpool city".
+
 # ukpolice 0.0.1.9000 (2018-05-20)
 
 ## Minor Improvements
