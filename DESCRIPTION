@@ -1,6 +1,6 @@
 Package: ukpolice
 Title: Access UK Police Data
-Version: 0.0.1.9100
+Version: 0.0.2.9000
 Authors@R: person("Nicholas", "Tierney", email = "nicholas.tierney@gmail.com", role = c("aut", "cre"))
 Description: Provides access to the UK police data, 
     https://data.police.uk/ via their API. The data contains various information
