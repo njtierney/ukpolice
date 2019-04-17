@@ -103,6 +103,11 @@ ukpolice does other things! At the moment other features include:
 
 To see these examples, read the vignette "Getting Started with ukpolice".
 
+ukpolice also has functions for retrieving the stop and search data:
+
+- `ukp_stop_search()`
+- `ukp_stop_search_poly()`
+
 ## Code of Conduct
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

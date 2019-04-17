@@ -1,3 +1,10 @@
+# ukpolice 0.0.2.9000 (2019-04-14)
+
+## New Features
+
+* gains `ukp_stop_search()` and `ukp_stop_seach_poly()` (#22 & #23) to return
+  the stop and search crime information https://data.police.uk/docs/method/stops-street/
+
 # ukpolice 0.0.1.9100 (2019-04-15)
 
 ## Minor Improvements
