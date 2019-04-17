@@ -11,7 +11,8 @@ ukp_crime(lat, lng, date = NULL, ...)
 
 \item{lng, }{longitude of the requested crime area}
 
-\item{date, }{Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"}
+\item{date, }{Optional. (YYY-MM), limit results to a specific month. The
+latest month will be shown by default. e.g. date = "2013-01"}
 
 \item{...}{further arguments passed to or from other methods. For example,
 verbose option can be added with
@@ -62,7 +63,8 @@ The API will return a 400 status code in response to a GET request
 longer than 4094 characters. For submitting particularly complex poly
 parameters, consider using POST instead.
 
-more documentation here: \url{https://data.police.uk/docs/method/crime-street/}
+more documentation here:
+\url{https://data.police.uk/docs/method/crime-street/}
 }
 \examples{
 

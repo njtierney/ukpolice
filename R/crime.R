@@ -11,7 +11,8 @@
 #'
 #' @param lat latitude of the requested crime area
 #' @param lng, longitude of the requested crime area
-#' @param date, Optional. (YYY-MM), limit results to a specific month. The latest month will be shown by default. e.g. date = "2013-01"
+#' @param date, Optional. (YYY-MM), limit results to a specific month. The
+#'   latest month will be shown by default. e.g. date = "2013-01"
 #' @param ... further arguments passed to or from other methods. For example,
 #'   verbose option can be added with
 #'   `ukp_api("call", config = httr::verbose())`. See more in `?httr::GET`
@@ -49,7 +50,8 @@
 #'     outcome for the crime
 #' }
 #'
-#' @note more documentation here: <https://data.police.uk/docs/method/crime-street/>
+#' @note more documentation here:
+#'   <https://data.police.uk/docs/method/crime-street/>
 #'
 #' @examples
 #'
