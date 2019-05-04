@@ -1,16 +1,29 @@
-#' Forces
+#' List Police Forces in the UK
 #'
-#' A list of all the police forces available via the API. Unique force identifiers obtained here are used in requests for force-specific data via other methods.
+#' This is an empty function called as `ukp_list_forces()`. This lists all the
+#'   police forces available via the UK police API. The unique force identifiers
+#'   can be used in requests for force-specific data. Such as [ukp_force()] and
+#'   [ukp_force_people()].
 #'
-#' ukp_forces
+#' @return table with columns `id` and `name`.`id` is a Unique force identifier,
+#'   `name` is the force name.
 #'
-#' List of forces
-# #' @return table with columns id, and name. id is a	Unique force identifier, name is a	Force name.
+#' @export
+#' @examples
+#' ukp_list_forces()
+ukp_list_forces <- function(){
+    result <- ukp_api("api/forces")
+
+    extract_result <- purrr::map_dfr(.x = result$content,
+                                     .f = ukp_crime_unlist)
+
+    extract_result
+
+}
+
+#' List Information about a specific force in the UK
 #'
-#'
-#' Specific force
-#'
-#' ukp_forces_specific
+#' List specific information for a given police force in the UK.
 #'
 #' https://data.police.uk/docs/method/force/
 #' returns this information
@@ -25,6 +38,15 @@
     # id	Unique force identifier
     # name	Force name
 #'
+ukp_forces <- function(force){
+    result <- ukp_api(glue::glue("api/forces/{force}"))
+
+    extract_result <- purrr::map_dfr(.x = result$content[[3]],
+                                     .f = ukp_crime_unlist)
+
+    return(extract_result)
+
+}
 #' Force senior officers
 #'
 #' ukp_forces_people
@@ -52,3 +74,12 @@
     # rss	RSS URL
     # name	Name of the person
     # rank	Force rank
+ukp_forces_people <- function(force){
+    result <- ukp_api(glue::glue("api/forces/{force}/people"))
+
+    browser()
+    extract_result <- purrr::map_dfr(.x = result$content,
+                                     .f = ukp_crime_unlist)
+
+    return(extract_result)
+}

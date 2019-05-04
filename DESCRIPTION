@@ -23,7 +23,7 @@ Imports:
 RoxygenNote: 6.1.1
 Suggests: 
     covr,
-    testthat,
+    testthat (>= 2.1.0),
     knitr,
     rmarkdown,
     ggplot2,
